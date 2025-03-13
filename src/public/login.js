@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from '../api/api'
+import { jwtDecode } from "jwt-decode";
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -11,9 +12,8 @@ const Login = () => {
     e.preventDefault();
     try {
       const response = await api.post(`login`, { username, password });
-      console.log(response);
-      const { token, role } = response.data;
-      localStorage.setItem("token", token);
+      const { role } = jwtDecode(response.data.token);
+      localStorage.setItem("token", response.data.token);
       localStorage.setItem("role", role);
 
       // Điều hướng theo role
