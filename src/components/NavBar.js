@@ -1,4 +1,4 @@
-import React, { memo, useEffect,useState } from 'react';
+import React, { memo } from 'react';
 import { NavLink } from 'react-router-dom';
 import '../css/Navbar.css';
 import { useAuth } from '../AuthContext';
