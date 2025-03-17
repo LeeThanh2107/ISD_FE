@@ -1,0 +1,112 @@
+/* Login.css */
+
+/* Đảm bảo body không có margin mặc định */
+body {
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Container chính để căn giữa */
+  .login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #A8C0CE; /* Màu nền xanh nhạt */
+  }
+  
+  /* Hộp đăng nhập */
+  .login-box {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Bóng nhẹ */
+    width: 100%;
+    max-width: 400px; /* Chiều rộng cố định */
+  }
+  
+  /* Tiêu đề */
+  .login-box h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  /* Thông báo lỗi */
+  .error-message {
+    color: red;
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+  }
+  
+  /* Nhóm input */
+  .input-group {
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Label */
+  .input-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    color: #333;
+  }
+  
+  /* Wrapper cho input và icon */
+  .input-wrapper {
+    position: relative;
+  }
+  
+  /* Icon bên trong input */
+  .input-wrapper .icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+  }
+  
+  /* Input */
+  .input-wrapper input {
+    width: 100%;
+    padding: 10px 10px 10px 10px; /* Thêm padding bên trái để chứa icon */
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  /* Placeholder */
+  .input-wrapper input::placeholder {
+    color: #999;
+  }
+  
+  /* Nút đăng nhập */
+  .login-button {
+    background-color: #00C4B4; /* Màu xanh lam */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    display: block;
+    margin-left: auto; /* Căn phải */
+  }
+  
+  /* Hover effect cho nút */
+  .login-button:hover {
+    background-color: #00b0a3;
+  }
+  
+  /* Responsive */
+  @media (max-width: 480px) {
+    .login-box {
+      padding: 1.5rem;
+      max-width: 90%;
+    }
+  }
