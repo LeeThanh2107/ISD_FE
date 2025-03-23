@@ -4,6 +4,7 @@
 body {
     margin: 0;
     padding: 0;
+    overflow: hidden;
   }
   
   /* Container chính để căn giữa */
@@ -12,14 +13,14 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: #A8C0CE; /* Màu nền xanh nhạt */
+    background: linear-gradient(to bottom,#FDDCAB,#FFC369); /* Màu nền xanh nhạt */
   }
   
   /* Hộp đăng nhập */
   .login-box {
     background-color: white;
     padding: 2rem;
-    border-radius: 8px;
+    border-radius: 37px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Bóng nhẹ */
     width: 100%;
     max-width: 400px; /* Chiều rộng cố định */
