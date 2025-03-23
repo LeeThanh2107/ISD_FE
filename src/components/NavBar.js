@@ -2,7 +2,7 @@ import React, { memo } from 'react';
 import { NavLink } from 'react-router-dom';
 import '../css/Navbar.css';
 import { useAuth } from '../AuthContext';
-
+import HeaderImage from '../images/Header (1).png';
 const Navbar = memo(({ userRole }) => {
   const auth = useAuth();
   // Định nghĩa menu items
@@ -38,9 +38,6 @@ const Navbar = memo(({ userRole }) => {
   return (
     <nav className="navbar">
       <div className="navbar-container">
-        <div to="/" className="navbar-logo">
-          Lý luận chính trị
-        </div>
         <ul className="nav-menu">
           {Array.isArray(currentMenuItems) && currentMenuItems.length > 0 ? (
             currentMenuItems.map((item) => (
@@ -55,17 +52,23 @@ const Navbar = memo(({ userRole }) => {
                 </NavLink>
               </li>
             ))
-          ) : (
-            <li className="nav-item">No menu items available</li>
+          )
+           : (
+            <li className="nav-item">
+              <img alt="" src={HeaderImage} className='title_img'></img>
+            </li>
           )}
         </ul>
-        <div className="nav-item" onClick={handleLogOut}>
-            <NavLink
-              to="/login"
-              >
-                Logout
-              </NavLink>
-          </div>
+{      currentMenuItems && currentMenuItems.length > 0 ? (
+     <div className="nav-item" onClick={handleLogOut}>
+     <NavLink
+       to="/login"
+       >
+         Logout
+       </NavLink>
+   </div>
+)     : <div></div>
+}
       </div>
     </nav>
   );

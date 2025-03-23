@@ -5,6 +5,8 @@ body {
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif; /* Font mặc định cho toàn ứng dụng */
+  background: linear-gradient(to bottom,#FDDCAB,#FFC369); /* Màu nền xanh nhạt */
+
 }
 
 /* Container chính của ứng dụng */
@@ -12,7 +14,6 @@ body {
   min-height: 100vh; /* Đảm bảo chiếm toàn bộ chiều cao màn hình */
   display: flex;
   flex-direction: column;
-  background-color: #f5f5f5; /* Màu nền nhẹ */
 }
 
 /* Nội dung chính */
@@ -21,6 +22,7 @@ body {
   padding-top: 60px; /* Chừa khoảng cách cho Navbar */
   padding-bottom: 20px; /* Thêm padding dưới để tránh nội dung sát đáy */
   box-sizing: border-box;
+
 }
 
 /* Khi không có Navbar, bỏ padding-top */
