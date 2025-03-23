@@ -32,7 +32,6 @@ const ManuscriptSubmission = () => {
 
   // Format text functions
   const applyFormatting = (tag) => {
-    const textarea = document.getElementById('manuscript-content');
     const selectedText = content.substring(selectionStart, selectionEnd);
 
     if (selectedText) {
@@ -64,7 +63,6 @@ const ManuscriptSubmission = () => {
 
   // Alignment functions
   const applyAlignment = (alignment) => {
-    const textarea = document.getElementById('manuscript-content');
     const selectedText = content.substring(selectionStart, selectionEnd);
     if (selectedText) {
       const newContent =
