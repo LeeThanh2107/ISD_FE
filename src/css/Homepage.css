@@ -1,0 +1,112 @@
+/* App.css */
+
+/* Reset default styles and set global styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Main app container */
+  .app {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f5e6cc; /* Light orange background */
+  }
+  
+  /* Header styling (uncomment and style if needed) */
+  .header {
+    background-color: #f4a261; /* Orange header background */
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Main content area */
+  .main-content {
+    display: flex;
+    flex: 1;
+  }
+  
+  /* Sidebar styling */
+  .sidebar {
+    width: 200px;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    height: calc(100vh - 60px); /* Adjust based on header height */
+  }
+  
+  .sidebar-item {
+    margin-bottom: 20px;
+  }
+  
+  .sidebar-item h3 {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .sidebar-item .sidebar-item h3 {
+    font-size: 14px;
+    color: #666;
+    margin-left: 10px;
+  }
+  
+  /* Dashboard (main content) styling */
+  .dashboard {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  .dashboard h2 {
+    font-size: 24px;
+    color: #4a2c2a; /* Dark brown color for the heading */
+    margin-bottom: 20px;
+  }
+  
+  .dashboard h2 span {
+    color: #666; /* Lighter gray for the subtitle */
+  }
+  
+  /* Card grid styling */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    gap: 20px;
+  }
+  
+  /* Individual card styling */
+  .card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    min-height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    color: #4a2c2a; /* Dark brown text */
+    text-align: center;
+  }
+  
+  /* Responsive design for smaller screens */
+  @media (max-width: 768px) {
+    .main-content {
+      flex-direction: column;
+    }
+  
+    .sidebar {
+      width: 100%;
+      height: auto;
+    }
+  
+    .card-grid {
+      grid-template-columns: 1fr; /* Stack cards on smaller screens */
+    }
+  }
