@@ -1,9 +1,10 @@
-import '../../App.css';
+import '../../css/Homepage.css';
 import Header from '../../components/Header';
 function Homepage(){
     return (
         <div className="app">
-            <Header></Header>
+            {/* <Header></Header> */}
+            
           <div className="main-content">
             <aside className="sidebar">
               <div className="sidebar-item">

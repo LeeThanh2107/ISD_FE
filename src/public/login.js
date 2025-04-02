@@ -18,6 +18,7 @@ const Login = () => {
       const { role } = jwtDecode(response.data.token);
       localStorage.setItem("token", response.data.token);
       localStorage.setItem("role", role);
+      localStorage.setItem('fullname',response.data.fullname);
       auth.setUserRole(role);
       // Điều hướng theo role
       if (role === "ADMIN") {
