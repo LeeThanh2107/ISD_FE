@@ -4,6 +4,7 @@ import '../css/Navbar.css';
 import { useAuth } from '../AuthContext';
 import { FaBell, FaUser, FaCaretDown } from 'react-icons/fa';
 import HeaderImage from '../images/Header.png'
+import Logo from '../images/logo.png'
 const Navbar = memo(({ userRole, isLoginScreen = false }) => {
   const auth = useAuth();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -31,36 +32,41 @@ const Navbar = memo(({ userRole, isLoginScreen = false }) => {
   const handleLogOut = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('role');
+    localStorage.removeItem('fullname');
     auth.setUserRole('GUEST');
     window.location.href="/login"
   };
 
   return (
     <nav className="navbar">
-      <div className="navbar-container">
         {isLoginScreen ? (
           // Login screen header
+          <div className="navbar-login-container">
           <div className="login-header">
               <img src={HeaderImage} alt="Login Header" className="header-image" />
+          </div>
           </div>
         ) : (
           // Regular navigation bar
           <>
+          <div className="navbar-container">
             <div className="navbar-logo">
-              <img src="/path-to-logo.png" alt="Logo" className="logo" />
+              <img src={Logo} alt="Logo" className="logo" />
             </div>
+            <div className='user-container'>
             <div className="user-section">
               <div className="user-info" onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
                 <FaBell className="icon" />
-                <span className="username">Bùi Giang Nam</span>
+                <span className="username">{localStorage.getItem('fullname')}</span>
                 <FaUser className="icon" />
                 <FaCaretDown className="caret" />
               </div>
+            </div>
               {isDropdownOpen && (
                 <div className="dropdown-menu">
                   <ul>
                     {currentMenuItems.map((item) => (
-                      <li key={item.path}>
+                      <li className='items' key={item.path}>
                         <NavLink
                           to={item.path}
                           className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}
@@ -79,9 +85,9 @@ const Navbar = memo(({ userRole, isLoginScreen = false }) => {
                 </div>
               )}
             </div>
+          </div>
           </>
         )}
-      </div>
     </nav>
   );
 });
