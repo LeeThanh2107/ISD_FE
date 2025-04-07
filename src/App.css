@@ -1,42 +1,50 @@
-/* App.css */
+/* styles/common.css */
 
-/* Reset margin và padding mặc định */
+:root {
+  --primary-color: #ff8c1a;
+  --secondary-color: #fff5e6;
+  --text-dark: #5a2a00;
+  --text-light: #ffffff;
+  --card-bg: #ffffff;
+  --shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  --border-radius: 8px;
+}
+
 body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to bottom right, #ffcc80, #ffb74d);
   margin: 0;
   padding: 0;
-  font-family: Arial, sans-serif; /* Font mặc định cho toàn ứng dụng */
-  background: linear-gradient(to bottom,#FDDCAB,#FFC369); /* Màu nền xanh nhạt */
-
+  color: var(--text-dark);
 }
 
-/* Container chính của ứng dụng */
-.app-container {
-  min-height: 100vh; /* Đảm bảo chiếm toàn bộ chiều cao màn hình */
+.card {
+  background-color: var(--card-bg);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  padding: 1rem;
+  margin: 1rem;
+  flex: 1 1 45%;
+  min-height: 150px;
+}
+
+.container {
+  margin-left: 260px; /* to offset sidebar */
+  padding: 2rem;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
-/* Nội dung chính */
-.main-content {
-  flex: 1; /* Chiếm toàn bộ không gian còn lại */
-  padding-top: 60px; /* Chừa khoảng cách cho Navbar */
-  padding-bottom: 20px; /* Thêm padding dưới để tránh nội dung sát đáy */
-  box-sizing: border-box;
-
+.section-title {
+  color: darkred;
+  font-weight: bold;
+  margin-bottom: 1rem;
 }
 
-/* Khi không có Navbar, bỏ padding-top */
-.main-content.no-navbar {
-  padding-top: 0;
-}
-
-/* Responsive: Điều chỉnh padding trên màn hình nhỏ */
-@media (max-width: 768px) {
-  .main-content {
-    padding-top: 50px; /* Giảm padding nếu Navbar nhỏ hơn trên mobile */
-  }
-
-  .main-content.no-navbar {
-    padding-top: 0;
-  }
+.note-box {
+  background-color: #f4f4f4;
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
 }

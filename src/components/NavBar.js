@@ -15,9 +15,9 @@ const Navbar = memo(({ userRole, isLoginScreen = false }) => {
       { path: '/admin/create-user', label: 'Create Users' },
     ],
     EDITOR: [
-      { path: '/', label: 'Home' },
-      { path: '/profile', label: 'Profile' },
-      { path: '/my-orders', label: 'My Orders' },
+      { path: '/editor/home', label: 'Home' },
+      { path: '/editor/article-list', label: 'List Article' },
+      { path: '/editor/article-review', label: 'Review' },
     ],
     WRITER: [
       { path: '/writer/home', label: 'Home' },
