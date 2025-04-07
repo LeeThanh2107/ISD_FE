@@ -70,7 +70,10 @@ const Login = () => {
               />
             </div>
           </div>
+          <div className="buttons">
+          <a href="/reset-password">Đổi mật khẩu</a>
           <button type="submit" className="login-button">ĐĂNG NHẬP</button>
+          </div>
         </form>
       </div>
     </div>
