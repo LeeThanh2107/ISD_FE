@@ -80,6 +80,11 @@ body {
     box-sizing: border-box;
   }
   
+  .buttons{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
   /* Placeholder */
   .input-wrapper input::placeholder {
     color: #999;

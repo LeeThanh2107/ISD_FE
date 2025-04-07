@@ -7,7 +7,8 @@ import Navbar from "./components/NavBar";
 import { useAuth } from "./AuthContext";
 import NewArticle from "./public/Writer/NewArticle";
 import WriterHome from "./public/Writer/Homepage";
-
+import EditorHome from "./public/Editor/Homepage";
+import ResetPassword from "./public/resetPassword";
 const App = () => {
   const auth = useAuth();
   const [userRole, setUserRole] = useState('guest');
@@ -26,10 +27,13 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Navigate to="/login" />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/admin/home" element={<AdminHome />} />
         <Route path="/admin/create-user" element={<NewUser />} />
         <Route path="/writer/create-article" element={<NewArticle />} />
         <Route path="/writer/home" element={<WriterHome />} />
+        <Route path="/editor/home" element={<EditorHome />} />
+        
       </Routes>
     </div>
   );
