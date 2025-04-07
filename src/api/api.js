@@ -27,11 +27,11 @@ api.interceptors.response.use(
   (response) => response,
   (error) => {
     // Kiểm tra nếu lỗi là 403 Forbidden
-    if (error.response && error.response.status === 403) {
+    if (error.response && error.response.status === 401) {
       // Xóa token và role khỏi localStorage
-      // localStorage.removeItem("token");
-      // localStorage.removeItem("role");
-      // window.location.href="/login";      
+      localStorage.removeItem("token");
+      localStorage.removeItem("role");
+      window.location.href="/login";      
     }
     return Promise.reject(error);
   }
