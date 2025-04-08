@@ -1,184 +1,231 @@
-/* Reset margin và padding mặc định */
-body {
-  margin: 0;
-  padding: 0;
-}
+/* NewArticle.css */
 
-/* Container chính để căn giữa nội dung */
-.new-article-container {
+/* Container for the entire page */
+.manuscript-container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   min-height: 100vh;
-  padding: 20px;
-  background-color: #f5f5f5;
+  background-color: #f5e6cc; /* Light orange background */
 }
 
-/* Form */
-.article-form {
+/* Main content area */
+.main-content {
+  flex: 1;
+  padding: 20px;
+  background-color: #e8ecef; /* Light gray background as in the image */
+  display: flex;
+  justify-content: center;
+}
+
+/* Content wrapper to maintain white background */
+.content-wrapper {
+  background-color: #fff; /* White background for the content area */
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
   width: 100%;
-  max-width: 600px;
-  background: url('https://www.transparenttextures.com/patterns/paper.png'), #fff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  padding: 20px;
-  font-family: 'Georgia', serif;
-  color: #333;
+  max-width: 600px; /* Match the width of the content area */
 }
 
-/* Nhóm input và textarea */
+/* Toolbar */
+.toolbar {
+  display: flex;
+  gap: 5px;
+  background-color: #f8f9fa;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.toolbar button {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 4px;
+}
+
+.toolbar button:hover {
+  background-color: #e9ecef;
+}
+
+/* Form group */
 .form-group {
   margin-bottom: 20px;
 }
 
-.form-group label {
-  margin-bottom: 8px;
+/* Title */
+.title {
+  font-size: 24px;
   font-weight: bold;
-  font-size: 1.1rem;
-  color: #444;
-  display: block;
+  color: #000; /* Black text */
+  margin-bottom: 5px;
+  cursor: pointer;
+  line-height: 1.2;
 }
 
 .title-input {
   width: 100%;
-  padding: 10px;
-  font-size: 1rem;
-  border: none;
-  border-bottom: 1px solid #999;
-  background: transparent;
-  font-family: 'Georgia', serif;
-  color: #333;
-  outline: none;
-  transition: border 0.3s ease, box-shadow 0.3s ease;
-}
-
-.title-input:focus {
-  border: 2px solid #007bff;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-  border-radius: 4px;
-}
-
-.abstract-textarea {
-  width: 100%;
-  min-height: 100px;
-  padding: 10px;
-  font-size: 1rem;
-  border: none;
-  border-bottom: 1px solid #999;
-  background: transparent;
-  font-family: 'Sans', serif;
-  color: #333;
-  resize: vertical;
-  transition: border 0.3s ease, box-shadow 0.3s ease;
-}
-
-.abstract-textarea:focus {
-  border: 2px solid #007bff;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-  border-radius: 4px;
-}
-
-.content-textarea {
-  width: 100%;
-  min-height: 200px;
-  padding: 10px;
-  font-size: 1rem;
-  border: none;
-  border-bottom: 1px solid #999;
-  background: transparent;
-  font-family: 'Sans', serif;
-  color: #333;
-  resize: vertical;
-  transition: border 0.3s ease, box-shadow 0.3s ease;
-}
-
-.content-textarea:focus {
-  border: 2px solid #007bff;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-  border-radius: 4px;
-}
-
-/* Nút Submit */
-.submit-button {
-  width: 100%;
-  padding: 12px;
-  font-size: 1.1rem;
+  font-size: 24px;
   font-weight: bold;
-  color: #fff;
-  background-color: #28a745;
-  border: none;
-  border-radius: 0;
+  color: #000;
+  border: none; /* Remove border to blend with content area */
+  background-color: #fff; /* White background to match content area */
+  padding: 0; /* Remove padding to align with content */
+  resize: none;
+  min-height: 60px;
+  line-height: 1.2;
+}
+
+/* Author */
+.author {
+  font-size: 14px;
+  font-style: italic;
+  color: #666;
+  margin-bottom: 15px;
+}
+
+/* Description */
+.description-wrapper {
+  position: relative;
+  padding-bottom: 5px;
+  margin-bottom: 20px;
+}
+
+.description-wrapper::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  border-bottom: 1px dashed #007bff; /* Dashed blue underline */
+}
+
+.description {
+  font-size: 16px;
+  font-style: italic;
+  color: #666;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+}
+
+.description-input {
+  width: 100%;
+  font-size: 16px;
+  font-style: italic;
+  color: #666;
+  border: none; /* Remove border to blend with content area */
+  background-color: #fff; /* White background to match content area */
+  padding: 0; /* Remove padding to align with content */
+  resize: none;
+  min-height: 40px;
+}
+
+/* Content */
+.editor-container {
+  width: 100%;
+}
+
+.content {
+  font-size: 16px;
+  color: #333;
+  line-height: 1.6;
+  cursor: pointer;
+  background-color: #fff; /* White background */
+  padding: 0; /* Remove padding since it's handled by content-wrapper */
+  border: none; /* Remove border since it's handled by content-wrapper */
+  min-height: 200px;
+}
+
+.content-input {
+  width: 100%;
+  font-size: 16px;
+  color: #333;
+  line-height: 1.6;
+  border: none; /* Remove border to blend with content area */
+  background-color: #fff; /* White background to match content area */
+  padding: 0; /* Remove padding to align with content */
+  resize: vertical;
+  min-height: 200px;
+}
+
+/* Sidebar (unchanged) */
+.sidebar {
+  width: 300px;
+  background-color: #e8ecef;
+  padding: 20px;
+  border-left: 1px solid #ccc;
+}
+
+.sidebar h3 {
+  font-size: 18px;
+  color: #4a2c2a;
+  margin-bottom: 10px;
+}
+
+.notes {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.5;
+  cursor: pointer;
+  background-color: #fff;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  min-height: 100px;
+}
+
+.notes-input {
+  width: 100%;
+  font-size: 14px;
+  color: #666;
+  line-height: 1.5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+  resize: vertical;
+  min-height: 100px;
+}
+
+.notes-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
   margin-top: 10px;
 }
 
-.submit-button:hover {
-  background-color: #218838;
-}
-
-/* Modal */
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
-
-.modal-content {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 5px;
-  width: 80%;
-  max-width: 500px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  font-family: 'Arial', sans-serif;
-}
-
-.modal-content h2 {
-  margin-top: 0;
-  color: #333;
-}
-
-.modal-content pre {
-  text-align: left;
-  background-color: #f5f5f5;
-  padding: 10px;
-  border-radius: 4px;
-  overflow-x: auto;
-}
-
-.modal-close-button {
-  padding: 10px 20px;
-  font-size: 1rem;
-  color: #fff;
+.notes-buttons button {
   background-color: #007bff;
+  color: #fff;
   border: none;
-  border-radius: 4px;
+  padding: 5px 10px;
   cursor: pointer;
-  margin-top: 20px;
+  font-size: 14px;
+  border-radius: 4px;
 }
 
-.modal-close-button:hover {
+.notes-buttons button:hover {
   background-color: #0056b3;
 }
 
-/* Responsive */
+/* Responsive design */
 @media (max-width: 768px) {
-  .new-article-container {
+  .manuscript-container {
+    flex-direction: column;
+  }
+
+  .main-content {
     padding: 10px;
   }
-  .article-form {
+
+  .content-wrapper {
     max-width: 100%;
-    padding: 15px;
+  }
+
+  .sidebar {
+    width: 100%;
+    border-left: none;
+    border-top: 1px solid #ccc;
   }
 }

@@ -18,6 +18,7 @@ const Login = () => {
       const { role } = jwtDecode(response.data.token);
       localStorage.setItem("token", response.data.token);
       localStorage.setItem("role", role);
+      localStorage.setItem('fullname',response.data.name);
       auth.setUserRole(role);
       // Điều hướng theo role
       if (role === "ADMIN") {
@@ -69,7 +70,10 @@ const Login = () => {
               />
             </div>
           </div>
+          <div className="buttons">
+          <a href="/reset-password">Đổi mật khẩu</a>
           <button type="submit" className="login-button">ĐĂNG NHẬP</button>
+          </div>
         </form>
       </div>
     </div>

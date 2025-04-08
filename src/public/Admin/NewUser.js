@@ -42,14 +42,15 @@ function NewUser(){
             setModalIsOpen(true);
           } catch (err) {
             setMessage('');
-            setTempPassword('');
-            setError('Network error or server issue!');
+            setTempPassword('');            
+            setError('Check the information and try again or contact administrator!');
             setModalIsOpen(true);
           }
     }
 
     return(
         <div>
+            <form>
             <div>
             <div>
                 <label>
@@ -84,6 +85,7 @@ function NewUser(){
             <div>
                 <button id="submit" onClick={createNewUser}>Create</button>
             </div>
+            </form>
             <UserCreateModal
             isOpen={modalIsOpen}
             onClose={closeModal}
