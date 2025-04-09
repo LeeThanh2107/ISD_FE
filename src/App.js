@@ -9,6 +9,7 @@ import NewArticle from "./public/Writer/NewArticle";
 import WriterHome from "./public/Writer/Homepage";
 import EditorHome from "./public/Editor/Homepage";
 import ResetPassword from "./public/resetPassword";
+import ArticleList from "./public/Editor/ArticleList";
 const App = () => {
   const auth = useAuth();
   const [userRole, setUserRole] = useState('guest');
@@ -33,7 +34,7 @@ const App = () => {
         <Route path="/writer/create-article" element={<NewArticle />} />
         <Route path="/writer/home" element={<WriterHome />} />
         <Route path="/editor/home" element={<EditorHome />} />
-        
+        <Route path="/editor/article-list" element={<ArticleList />} />
       </Routes>
     </div>
   );

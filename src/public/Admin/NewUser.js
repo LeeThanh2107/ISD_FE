@@ -50,7 +50,6 @@ function NewUser(){
 
     return(
         <div>
-            <form>
             <div>
             <div>
                 <label>
@@ -85,7 +84,6 @@ function NewUser(){
             <div>
                 <button id="submit" onClick={createNewUser}>Create</button>
             </div>
-            </form>
             <UserCreateModal
             isOpen={modalIsOpen}
             onClose={closeModal}

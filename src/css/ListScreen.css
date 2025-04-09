@@ -1,0 +1,55 @@
+/* src/pages/ListScreen.css */
+  .full-list-wrapper {
+    padding: 20px;
+  }
+  
+  .header {
+    margin-bottom: 30px;
+  }
+  
+  .page-title {
+    font-size: 22px;
+    color: var(--text-dark);
+    margin: 0;
+  }
+  body{
+    overflow-y : scroll;
+  }
+  .page-title span {
+    font-size: 14px;
+    color: #555;
+    font-weight: normal;
+  }
+  
+  /* Full-width list */
+  .task-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .task-card.full-width {
+    background: var(--card-bg);
+    box-shadow: var(--shadow);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    width: 100%;
+  }
+  
+  .card-summary{
+    font-size: 16px;
+    color: #232326;
+  }
+.card-author{
+    font-size: 12px;
+}
+  .card-title {
+    color: darkred;
+    margin: 0 0 10px;
+    font-size: 16px;
+  }
+  .card-title a {
+    text-decoration: none;
+    color: #232326;
+  }
+  
