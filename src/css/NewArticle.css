@@ -25,7 +25,80 @@
   width: 100%;
   max-width: 600px; /* Match the width of the content area */
 }
+.save-button-container {
+  margin-top: 1rem;
+  text-align: center;
+}
 
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed; /* Fixed to cover the entire viewport */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* High z-index to appear above other content */
+  overflow: auto; /* Allow scrolling if content overflows */
+}
+
+/* Modal Content */
+.modal-content {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+/* Modal Heading */
+.modal-content h3 {
+  margin: 0 0 1rem;
+  color: #333;
+  font-size: 1.5rem;
+}
+
+/* Modal Paragraph */
+.modal-content p {
+  margin: 0 0 1.5rem;
+  color: #555;
+  font-size: 1rem;
+}
+
+/* Modal Button */
+.modal-content button {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 0.5rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.2s;
+}
+
+.modal-content button:hover {
+  background: #0056b3;
+}
+
+/* Prevent background scrolling when modal is open */
+body.modal-open {
+  overflow: hidden;
+}
+.save-status {
+  margin-top: 0.5rem;
+  color: #555;
+  font-size: 0.9rem;
+}
+.save-status:empty {
+  display: none;
+}
 /* Toolbar */
 .toolbar {
   display: flex;
