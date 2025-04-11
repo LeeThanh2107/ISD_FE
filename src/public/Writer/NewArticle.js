@@ -139,7 +139,7 @@ const ManuscriptSubmission = () => {
   };
 
   const handleRedirectHome = () => {
-    window.location.href = '/home'// Redirect to home screen
+    window.location.href = '/writer/home'// Redirect to home screen
   };
 
   const renderEditable = (ref, value, placeholder, fieldName) => (
@@ -224,7 +224,7 @@ const ManuscriptSubmission = () => {
             </div>
 
             <div className="save-button-container">
-              <button type="button" onClick={handleSaveClick}>
+              <button type="button" className="save-button" onClick={handleSaveClick}>
                 Save to Database
               </button>
               {saveStatus && <p className="save-status">{saveStatus}</p>}

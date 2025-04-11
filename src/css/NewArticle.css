@@ -25,9 +25,42 @@
   width: 100%;
   max-width: 600px; /* Match the width of the content area */
 }
+/* Save Button Styling */
 .save-button-container {
   margin-top: 1rem;
   text-align: center;
+}
+
+.save-button {
+  background: #007bff; /* Blue background */
+  color: white; /* White text */
+  font-weight: 600; /* Bold text */
+  font-size: 1rem; /* Adjust font size as needed */
+  padding: 0.5rem 1.5rem; /* Padding for size */
+  border: none; /* No border */
+  border-radius: 4px; /* Slightly rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background 0.2s ease; /* Smooth hover transition */
+}
+
+.save-button:hover {
+  background: #0056b3; /* Darker blue on hover */
+}
+
+.save-button:focus {
+  outline: none; /* Remove default focus outline */
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.3); /* Add a subtle focus ring */
+}
+
+/* Ensure save-status styling remains consistent */
+.save-status {
+  margin-top: 0.5rem;
+  color: #555;
+  font-size: 0.9rem;
+}
+
+.save-status:empty {
+  display: none;
 }
 
 /* Modal Overlay */
@@ -90,14 +123,6 @@
 /* Prevent background scrolling when modal is open */
 body.modal-open {
   overflow: hidden;
-}
-.save-status {
-  margin-top: 0.5rem;
-  color: #555;
-  font-size: 0.9rem;
-}
-.save-status:empty {
-  display: none;
 }
 /* Toolbar */
 .toolbar {
