@@ -9,9 +9,12 @@ import NewArticle from "./public/Writer/NewArticle";
 import WriterHome from "./public/Writer/Homepage";
 import EditorHome from "./public/Editor/Homepage";
 import ResetPassword from "./public/resetPassword";
+import ArticleList from "./public/Editor/ArticleList";
+import Review from "./public/Editor/Review";
 const App = () => {
   const auth = useAuth();
   const [userRole, setUserRole] = useState('guest');
+  const [homeRoute, setHomeRoute] = useState('/login');
   const location = useLocation(); // Hook to get the current route
 
   // Determine if the current route is the login screen
@@ -19,21 +22,29 @@ const App = () => {
 
   useEffect(() => {
     setUserRole(auth.userRole);
+    if(auth.userRole === 'ADMIN'){
+       setHomeRoute(process.env.REACT_APP_HOME_ADMIN)
+    }else if(auth.userRole === 'WRITER'){
+      setHomeRoute(process.env.REACT_APP_HOME_WRITER)
+    }else if(auth.userRole === 'EDITOR'){
+      setHomeRoute(process.env.REACT_APP_HOME_EDITOR)
+    }
   }, [auth.userRole]);
 
   return (
     <div>
       <Navbar userRole={userRole} isLoginScreen={isLoginScreen} />
       <Routes>
-        <Route path="/" element={<Navigate to="/login" />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/" element={userRole === 'guest' ? <Navigate to="/login" />: <Navigate to={homeRoute} />} />
+        <Route path="/login" element={userRole === 'guest' ? <Login />: <Navigate to={homeRoute} />} />
         <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/admin/home" element={<AdminHome />} />
+        <Route path="/editor/review/:id" element={<Review />} />
         <Route path="/admin/create-user" element={<NewUser />} />
         <Route path="/writer/create-article" element={<NewArticle />} />
         <Route path="/writer/home" element={<WriterHome />} />
         <Route path="/editor/home" element={<EditorHome />} />
-        
+        <Route path="/editor/article-list" element={<ArticleList />} />
       </Routes>
     </div>
   );

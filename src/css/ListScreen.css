@@ -1,0 +1,102 @@
+.full-list-wrapper {
+  padding: 20px;
+  background: linear-gradient(to bottom, #fcd088, #fff3d1);
+  min-height: 100vh;
+}
+
+.header {
+  margin-bottom: 20px;
+}
+
+.page-title {
+  font-size: 20px;
+  color: #8b0000;
+  margin: 0;
+  font-weight: bold;
+}
+
+.task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: #f3f3f3;
+  border-radius: 6px;
+  padding: 10px;
+}
+
+.task-card.full-width {
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 16px;
+  margin: 20px 20px 20px 0px;
+  width: 100%;
+}
+
+.card-title {
+  color: #000;
+  margin: 0;
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.card-title a {
+  text-decoration: none;
+  color: #000;
+}
+
+.card-summary {
+  font-size: 14px;
+  color: #555;
+  display: flex;
+  align-items: center;
+  margin: 5px 0;
+}
+
+.card-author {
+  font-size: 13px;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.card-author p {
+  margin: 0;
+}
+
+.card-meta {
+  display: flex;
+  flex-direction: column;
+  font-size: 13px;
+  color: #333;
+  margin-top: 8px;
+  line-height: 1.6;
+}
+
+.card-meta .label {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.card-meta .status-published {
+  color: #219653;
+  font-weight: bold;
+}
+
+.card-meta .status-rejected {
+  color: #d32f2f;
+  font-weight: bold;
+}
+
+.card-meta .status-pending {
+  color: #666;
+}
+
+.date-header {
+  font-size: 16px;
+  font-weight: bold;
+  color: #d32f2f;
+  margin: 10px 0;
+}
