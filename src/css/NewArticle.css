@@ -23,7 +23,6 @@
   border: 1px solid #ccc;
   border-radius: 4px;
   width: 100%;
-  max-width: 600px; /* Match the width of the content area */
 }
 /* Save Button Styling */
 .save-button-container {
@@ -318,7 +317,7 @@ body.modal-open {
   }
 
   .content-wrapper {
-    max-width: 100%;
+    /* max-width: 100%; */
   }
 
   .sidebar {

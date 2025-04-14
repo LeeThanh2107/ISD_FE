@@ -232,17 +232,6 @@ const ManuscriptSubmission = () => {
           </form>
         </div>
       </div>
-
-      <div className="sidebar">
-        <h3>Ghi chú</h3>
-        {renderEditable(notesRef, notes, initialNotes, 'notes')}
-        <div className="notes-buttons">
-          <button type="button">Đóng</button>
-          <button type="button">Lưu</button>
-          <button type="button">Gửi tới ban đọc</button>
-          <button type="button">Gửi tới Supersdesk</button>
-        </div>
-      </div>
     </div>
   );
 };

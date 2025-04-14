@@ -33,11 +33,10 @@
 
 /* Header image for login screen */
 .header-image {
-  position: absolute;
-  width: 255px;
-  height: 70px;
-  left: 0px;
-  top: 0px;
+  width: 65%; /* Reduce the width by 25% (100% - 25% = 75%) */
+  height: auto; /* Maintain aspect ratio */
+  display: block;
+  margin: 0 auto; /* Center the image horizontally */
 }
 
 /* Logo styling for regular navigation bar */
