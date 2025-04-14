@@ -18,12 +18,12 @@
   
   /* Header styling (uncomment and style if needed) */
   .header {
-    background-color: #f4a261; /* Orange header background */
+    /* background-color: #f4a261; Orange header background */
     padding: 10px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
   }
   
   /* Main content area */
