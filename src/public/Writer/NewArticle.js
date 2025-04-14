@@ -5,12 +5,10 @@ const ManuscriptSubmission = () => {
   const initialTitle = 'Nhập tiêu đề bài viết tại đây. Enter để xuống dòng. Tab để chuyển bài viết';
   const initialDescription = 'Nhập tóm tắt bài viết tại đây. Tab để chuyển tới khóa tiếp theo.';
   const initialContent = 'Gõ nội dung tại đây. Nhấn Tab hoặc Enter để tạo đoạn văn mới. Nhấn dòng thường Shift Enter để xuống dòng trong một đoạn văn mới.';
-  const initialNotes = 'Nhập ghi chú tại đây. Ctrl Enter để xuống dòng. Enter để lưu';
 
   const [title, setTitle] = useState(initialTitle);
   const [description, setDescription] = useState(initialDescription);
   const [content, setContent] = useState(initialContent);
-  const [notes, setNotes] = useState(initialNotes);
   const [editingFields, setEditingFields] = useState({
     title: false,
     description: false,
@@ -149,8 +147,8 @@ const ManuscriptSubmission = () => {
       suppressContentEditableWarning
       className={`editable-input ${fieldName}-input`}
       onFocus={() => handleFocus(ref, value, placeholder, fieldName)}
-      onInput={() => handleInput(ref, fieldName === 'title' ? setTitle : fieldName === 'description' ? setDescription : fieldName === 'content' ? setContent : setNotes)}
-      onBlur={() => handleBlur(ref, fieldName === 'title' ? setTitle : fieldName === 'description' ? setDescription : fieldName === 'content' ? setContent : setNotes, placeholder, fieldName)}
+      onInput={() => handleInput(ref, fieldName === 'title' ? setTitle : fieldName === 'description' ? setDescription :  setContent )}
+      onBlur={() => handleBlur(ref, fieldName === 'title' ? setTitle : fieldName === 'description' ? setDescription : setContent, placeholder, fieldName)}
       onKeyDown={(e) => handleKeyDown(e, fieldName)}
       dangerouslySetInnerHTML={value === placeholder && !editingFields[fieldName] ? { __html: value } : undefined}
     />

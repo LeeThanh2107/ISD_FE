@@ -20,7 +20,6 @@ const ManuscriptSubmission = () => {
     notes: false,
   });
   const [activeTab, setActiveTab] = useState('notes'); // For sidebar tabs
-  const [saveStatus, setSaveStatus] = useState('');
   const [showEmptyModal, setShowEmptyModal] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
 
@@ -42,8 +41,6 @@ const ManuscriptSubmission = () => {
         setContent(data.content || '');
       } catch (error) {
         console.error('Error fetching manuscript:', error);
-        setSaveStatus('Failed to load manuscript data');
-        setTimeout(() => setSaveStatus(''), 5000);
       }
     };
 
@@ -135,7 +132,6 @@ const ManuscriptSubmission = () => {
   };
 
   const saveToDatabase = async () => {
-    setSaveStatus('Saving...');
     try {
       const response = await api.post('/writer/article/create', {
         title: title !== placeholderTitle ? title : '',
@@ -144,19 +140,10 @@ const ManuscriptSubmission = () => {
       });
 
       if (response.status === 200 || response.status === 201) {
-        setSaveStatus('');
         setShowSuccessModal(true);
       } else {
-        const errorMessage = `Save failed: HTTP ${response.status} - ${response.data.message || 'Unknown error'}`;
-        setSaveStatus(errorMessage);
-        setTimeout(() => setSaveStatus(''), 5000);
       }
     } catch (error) {
-      const errorMessage = error.response
-        ? `Save failed: ${error.response.data.message || error.response.statusText}`
-        : `Save failed: ${error.message}`;
-      setSaveStatus(errorMessage);
-      setTimeout(() => setSaveStatus(''), 5000);
     }
   };
 
