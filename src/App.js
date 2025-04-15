@@ -8,7 +8,9 @@ import { useAuth } from "./AuthContext";
 import NewArticle from "./public/Writer/NewArticle";
 import WriterHome from "./public/Writer/Homepage";
 import EditorHome from "./public/Editor/Homepage";
-import ResetPassword from "./public/resetPassword";
+import EditorResetPassword from "./public/resetPassword";
+import AdminResetPassword from "./public/resetPassword";
+import WriterResetPassword from "./public/resetPassword";
 import ArticleList from "./public/Editor/ArticleList";
 import Review from "./public/Editor/Review";
 const App = () => {
@@ -37,7 +39,9 @@ const App = () => {
       <Routes>
         <Route path="/" element={userRole === 'guest' ? <Navigate to="/login" />: <Navigate to={homeRoute} />} />
         <Route path="/login" element={userRole === 'guest' ? <Login />: <Navigate to={homeRoute} />} />
-        <Route path="/reset-password" element={<ResetPassword />} />
+        <Route path="/admin/reset-password" element={userRole === 'admin' ? <Login />: <AdminResetPassword/>} />
+        <Route path="/editor/reset-password" element={userRole === 'writer' ? <Login />: <WriterResetPassword/>} />
+        <Route path="/writer/reset-password" element={userRole === 'editor' ? <Login />: <EditorResetPassword/>} />
         <Route path="/admin/home" element={<AdminHome />} />
         <Route path="/editor/review/:id" element={<Review />} />
         <Route path="/admin/create-user" element={<NewUser />} />

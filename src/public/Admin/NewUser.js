@@ -1,6 +1,7 @@
 import { useState } from "react";
 import api from "../../api/api";
 import UserCreateModal from "../../components/UserCreationModal";
+import '../../css/NewUser.css'
 function NewUser(){
     const [role,setRole] = useState('');
     const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -48,50 +49,65 @@ function NewUser(){
           }
     }
 
-    return(
-        <div>
-            <div>
-            <div>
-                <label>
-                    Email:
-                </label>
-                <input id="username" type="email" onChange={(e)=> setEmail(e.target.value)} value={email} placeholder="Enter email here" required></input>
-            </div>
-                <label>
-                    Full name:
-                </label>
-                <input id="fullname" type="text" onChange={(e)=> setFullname(e.target.value)} value={fullname} placeholder="Enter user's fullname here" required></input>
-            </div>
-            <div>
-                <label>
-                    Username:
-                </label>
-                <input id="username" type="text" onChange={(e)=> setUsername(e.target.value)} value={username} placeholder="Enter username here" required></input>
-            </div>
-            <div>
-                <label>Role: </label>
-                <select
-                value={role}
-                onChange={handleDropdownChange}
-                className="dropdown"
-              >
-                <option value="" disabled>Select an role</option>
-                <option value="2">Admin</option>
-                <option value="0">Writer</option>
-                <option value="1">Editor</option>
-              </select>
-            </div>
-            <div>
-                <button id="submit" onClick={createNewUser}>Create</button>
-            </div>
-            <UserCreateModal
+    return (
+        <div className="new-user-container">
+          <h2>Create New User</h2>
+          <div className="new-user-form-group">
+            <label>Email:</label>
+            <input
+              id="email"
+              type="email"
+              onChange={(e) => setEmail(e.target.value)}
+              value={email}
+              placeholder="Enter email here"
+              required
+            />
+          </div>
+          <div className="new-user-form-group">
+            <label>Full name:</label>
+            <input
+              id="fullname"
+              type="text"
+              onChange={(e) => setFullname(e.target.value)}
+              value={fullname}
+              placeholder="Enter user's full name"
+              required
+            />
+          </div>
+          <div className="new-user-form-group">
+            <label>Username:</label>
+            <input
+              id="username"
+              type="text"
+              onChange={(e) => setUsername(e.target.value)}
+              value={username}
+              placeholder="Enter username"
+              required
+            />
+          </div>
+          <div className="new-user-form-group">
+            <label>Role:</label>
+            <select value={role} onChange={handleDropdownChange}>
+              <option value="" disabled>Select a role</option>
+              <option value="2">Admin</option>
+              <option value="0">Writer</option>
+              <option value="1">Editor</option>
+            </select>
+          </div>
+          <div className="new-user-form-group">
+            <button className="new-user-submit-button" onClick={createNewUser}>
+              Create
+            </button>
+          </div>
+      
+          <UserCreateModal
             isOpen={modalIsOpen}
             onClose={closeModal}
             message={message}
             tempPassword={tempPassword}
             error={error}
-            />
+          />
         </div>
-    )
+      );      
 }
 export default NewUser;

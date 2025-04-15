@@ -4,7 +4,6 @@ import '../css/Login.css'; // Import file CSS
 import ChangePasswordModal from "../components/ChangePasswordModal";
 
 const ResetPassword = () => {
-  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -17,7 +16,7 @@ const ResetPassword = () => {
             setError("Mật khẩu không trùng khớp!");
             return;
         }else{
-            const response = await api.post(`reset-password`, { username, password });
+            const response = await api.post(`reset-password`, { password });
             if(response.status === 200){
                 setModalIsOpen(true);
                 setMessage(response.message);
@@ -38,23 +37,9 @@ const ResetPassword = () => {
   return (
     <div className="login-container">
       <div className="login-box">
-        <h2>Đăng nhập</h2>
+        <h2>Đổi mật khẩu</h2>
         {error && <p className="error-message">{error}</p>}
         <form onSubmit={handleLogin}>
-          <div className="input-group">
-            <label htmlFor="username">Tên đăng nhập</label>
-            <div className="input-wrapper">
-              <i className="fas fa-user icon"></i>
-              <input
-                type="text"
-                id="username"
-                placeholder="Tên đăng nhập"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                required
-              />
-            </div>
-          </div>
           <div className="input-group">
             <label htmlFor="password">Mật khẩu mới</label>
             <div className="input-wrapper">

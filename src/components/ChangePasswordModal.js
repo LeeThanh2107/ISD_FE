@@ -7,6 +7,9 @@ Modal.setAppElement('#root');
 const ChangePasswordModal = ({ isOpen, onClose, message, tempPassword, error }) => {
     const redirectToLogin = function(){
         window.location.href="/login";
+        localStorage.removeItem('token');
+        localStorage.removeItem('role');
+        localStorage.removeItem('fullname');
     }
   return (
     <Modal

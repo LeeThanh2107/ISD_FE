@@ -4,11 +4,14 @@ import { useAuth } from "../AuthContext";
 import api from '../api/api';
 import { jwtDecode } from "jwt-decode";
 import '../css/Login.css'; // Import file CSS
+import { setUserInfo } from "../redux/userSlice";
+import { useDispatch } from "react-redux";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const auth = useAuth();
   const handleLogin = async (e) => {
@@ -16,9 +19,12 @@ const Login = () => {
     try {
       const response = await api.post(`login`, { username, password });
       const { role } = jwtDecode(response.data.token);
+      dispatch(setUserInfo({
+        fullname: response.data.name,
+        role: role
+      }));
+      
       localStorage.setItem("token", response.data.token);
-      localStorage.setItem("role", role);
-      localStorage.setItem('fullname',response.data.name);
       auth.setUserRole(role);
       // Điều hướng theo role
       if (role === "ADMIN") {
@@ -71,7 +77,6 @@ const Login = () => {
             </div>
           </div>
           <div className="buttons">
-          <a href="/reset-password">Đổi mật khẩu</a>
           <button type="submit" className="login-button">ĐĂNG NHẬP</button>
           </div>
         </form>

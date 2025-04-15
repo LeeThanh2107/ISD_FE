@@ -13,6 +13,8 @@ const ManuscriptSubmission = () => {
   const [description, setDescription] = useState('');
   const [content, setContent] = useState('');
   const [notes, setNotes] = useState('');
+  const [comments, setComments] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
   const [editingFields, setEditingFields] = useState({
     title: false,
     description: false,
@@ -46,8 +48,9 @@ const ManuscriptSubmission = () => {
 
     if (id) {
       fetchData();
+      setIsLoading(true)
     }
-  }, [id]);
+  }, [id, isLoading]);
 
   // Set initial content only once when fetched data changes
   useEffect(() => {
@@ -130,13 +133,20 @@ const ManuscriptSubmission = () => {
       setEditingFields((prev) => ({ ...prev, [fieldName]: false }));
     }
   };
-
-  const saveToDatabase = async () => {
+  const handleReject = ()=>{
+    saveToDatabase(4);
+  }
+  const saveToDatabase = async (status) => {
     try {
-      const response = await api.post('/writer/article/create', {
-        title: title !== placeholderTitle ? title : '',
-        abstract: description !== placeholderDescription ? description : '',
-        content: content !== placeholderContent ? content : '',
+      const response = await api.post('/editor/article/review', {
+        article: {
+            title: title !== placeholderTitle ? title : '',
+            abstract: description !== placeholderDescription ? description : '',
+            content: content !== placeholderContent ? content : '',
+            status : status,
+        },
+        id: id,
+        comments: comments
       });
 
       if (response.status === 200 || response.status === 201) {
@@ -160,7 +170,7 @@ const ManuscriptSubmission = () => {
     if (!title.trim() && !description.trim() && !content.trim()) {
       setShowEmptyModal(true);
     } else {
-      saveToDatabase();
+      saveToDatabase(3);
     }
   };
 
@@ -322,8 +332,8 @@ const ManuscriptSubmission = () => {
                   <option>Nhãn bài 3 - 3,000,000 đ</option>
                 </select>
 
-                <h3>Nhắn xét của BTV</h3>
-                <textarea placeholder="Nhắn xét của bạn..."></textarea>
+                <h3>Nhận xét của BTV</h3>
+                <textarea value={comments} onChange={(e)=>setComments(e.target.value)} placeholder="Nhận xét của bạn..."></textarea>
               </div>
             )}
 
@@ -331,7 +341,7 @@ const ManuscriptSubmission = () => {
               <button className="btn-close">Đóng</button>
               <button className="btn-save">Lưu</button>
               <button className="btn-submit" onClick={handleSaveClick}>Gửi bài</button>
-              <button className="btn-create-writer">Tạo bài trên Writer</button>
+              <button className="btn-create-writer" onClick={handleReject}>Trả bài cho tác giả</button>
             </div>
           </div>
         </div>

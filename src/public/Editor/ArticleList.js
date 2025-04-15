@@ -66,18 +66,6 @@ const ListScreen = () => {
                     🕒 {formatTime(article.createdAt)}
                   </div>
                   <div className="card-meta">
-                    <div>
-                      <span className="label">Trạng thái:</span>
-                      <span className={
-                        article.status === 3 ? 'status-published'
-                          : article.status === 4 ? 'status-rejected'
-                            : 'status-pending'
-                      }>
-                        {article.status === 3 ? 'Được xuất bản' :
-                          article.status === 4 ? 'Bị từ chối' :
-                            'Chờ được phê duyệt'}
-                      </span>
-                    </div>
                     {article.comment && (
                       <div><span className="label">Nhận xét:</span> {article.comment}</div>
                     )}
