@@ -4,14 +4,11 @@ import { useAuth } from "../AuthContext";
 import api from '../api/api';
 import { jwtDecode } from "jwt-decode";
 import '../css/Login.css'; // Import file CSS
-import { setUserInfo } from "../redux/userSlice";
-import { useDispatch } from "react-redux";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const dispatch = useDispatch();
   const navigate = useNavigate();
   const auth = useAuth();
   const handleLogin = async (e) => {
@@ -19,12 +16,9 @@ const Login = () => {
     try {
       const response = await api.post(`login`, { username, password });
       const { role } = jwtDecode(response.data.token);
-      dispatch(setUserInfo({
-        fullname: response.data.name,
-        role: role
-      }));
-      
       localStorage.setItem("token", response.data.token);
+      localStorage.setItem("role", role);
+      localStorage.setItem('fullname',response.data.name);
       auth.setUserRole(role);
       // Điều hướng theo role
       if (role === "ADMIN") {
@@ -51,7 +45,6 @@ const Login = () => {
           <div className="input-group">
             <label htmlFor="username">Tên đăng nhập</label>
             <div className="input-wrapper">
-              <i className="fas fa-user icon"></i>
               <input
                 type="text"
                 id="username"
@@ -65,7 +58,6 @@ const Login = () => {
           <div className="input-group">
             <label htmlFor="password">Mật khẩu</label>
             <div className="input-wrapper">
-              <i className="fas fa-lock icon"></i>
               <input
                 type="password"
                 id="password"

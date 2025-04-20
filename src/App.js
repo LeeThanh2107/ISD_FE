@@ -11,8 +11,11 @@ import EditorHome from "./public/Editor/Homepage";
 import EditorResetPassword from "./public/resetPassword";
 import AdminResetPassword from "./public/resetPassword";
 import WriterResetPassword from "./public/resetPassword";
-import ArticleList from "./public/Editor/ArticleList";
+import EditorArticleList from "./public/Editor/ArticleList";
 import Review from "./public/Editor/Review";
+import WriterArticleList from './public/Writer/ArticleList';
+import EditArticle from './public/Writer/EditArticle';
+import WriterAnalytic from'./public/Admin/WriterAnalytic';
 const App = () => {
   const auth = useAuth();
   const [userRole, setUserRole] = useState('guest');
@@ -48,7 +51,10 @@ const App = () => {
         <Route path="/writer/create-article" element={<NewArticle />} />
         <Route path="/writer/home" element={<WriterHome />} />
         <Route path="/editor/home" element={<EditorHome />} />
-        <Route path="/editor/article-list" element={<ArticleList />} />
+        <Route path="/editor/article-list" element={<EditorArticleList />} />
+        <Route path="/writer/article-list" element={<WriterArticleList />} />
+        <Route path="/writer/edit/:id" element={<EditArticle />} />
+        <Route path="/admin/analytic/:id" element={<WriterAnalytic />} />
       </Routes>
     </div>
   );

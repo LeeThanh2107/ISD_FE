@@ -20,7 +20,7 @@ const ListScreen = () => {
 
   const getListArticle = async () => {
     try {
-      const response = await api.get('/editor/article/list');
+      const response = await api.get('/writer/article/list');
       setArticle(response.data.data);
     } catch (err) { }
   };
@@ -45,7 +45,7 @@ const ListScreen = () => {
   return (
     <div className="full-list-wrapper">
       <header className="header">
-        <h2 className="page-title">Danh sách bài viết</h2>
+        <h2 className="page-title">Bài viết chưa phê duyệt</h2>
       </header>
 
       <main className="task-list">
@@ -55,11 +55,9 @@ const ListScreen = () => {
               <div className="date-header">Ngày {date}</div>
               {articlesOnDate.map((article, index) => (
                 <div key={index} className="task-card full-width">
-                    {(article && (article.status !== 3 || article.status !== 4)) ?
-                     <div className="card-title">
-                      <Link to={`../editor/review/${article.encryptedId}`} dangerouslySetInnerHTML={{ __html: striptags(article.title, ['b', 'i']) }}></Link>
-                      </div>
-                    : <div className="card-title" dangerouslySetInnerHTML = {{__html: striptags(article.title, ['b', 'i'])}}></div> }
+                  <div className="card-title">
+                    <Link to={`../writer/edit/${article.encryptedId}`} dangerouslySetInnerHTML={{ __html: striptags(article.title, ['b', 'i']) }}></Link>
+                  </div>
                   <div className="card-summary"  dangerouslySetInnerHTML={{ __html: striptags(article.summary, ['b', 'i']) }}>
                   </div>
                   <div className="card-author">

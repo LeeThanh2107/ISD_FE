@@ -1,17 +1,14 @@
-import React, { memo, useState } from 'react';
+import React, { memo } from 'react';
 import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 import { useAuth } from '../AuthContext';
-import { FaBell, FaUser, FaCaretDown } from 'react-icons/fa';
+import { FaBell, FaUser } from 'react-icons/fa';
 import HeaderImage from '../images/Header.png';
 import Logo from '../images/logo.png';
 import '../css/Navbar.css';
 
 const Navbar = memo(({ userRole, isLoginScreen = false }) => {
   const auth = useAuth();
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-
-  const fullname = useSelector((state) => state.user.fullname);
+  const fullname = localStorage.getItem('fullname');
 
   const menuItems = {
     ADMIN: [
@@ -26,6 +23,7 @@ const Navbar = memo(({ userRole, isLoginScreen = false }) => {
     ],
     WRITER: [
       { path: '/writer/home', label: 'Trang chủ' },
+      { path: '/writer/article-list', label: 'Bài viết trong ban'},
       { path: '/writer/create-article', label: 'Viết bài' },
       { path: '/writer/reset-password', label: 'Đổi mật khẩu' }
     ],
@@ -35,6 +33,8 @@ const Navbar = memo(({ userRole, isLoginScreen = false }) => {
 
   const handleLogOut = () => {
     localStorage.removeItem('token');
+    localStorage.removeItem("fullname");
+    localStorage.removeItem('role');
     auth.setUserRole('GUEST');
     window.location.href = "/login";
   };
@@ -52,37 +52,34 @@ const Navbar = memo(({ userRole, isLoginScreen = false }) => {
           <div className="navbar-logo">
             <img src={Logo} alt="Logo" className="logo" />
           </div>
-          <div className='user-container'>
+          
+          {/* Navigation links in the middle */}
+          <div className="navbar-nav">
+            <ul className="nav-menu">
+              {currentMenuItems.map((item) => (
+                <li className="nav-item" key={item.path}>
+                  <NavLink
+                    to={item.path}
+                    className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}
+                  >
+                    {item.label}
+                  </NavLink>
+                </li>
+              ))}
+            </ul>
+          </div>
+          
+          <div className="user-container">
             <div className="user-section">
-              <div className="user-info" onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
+              <div className="user-info">
                 <FaBell className="icon" />
-                <span className="username">{fullname}</span> {/* ✅ From Redux */}
+                <span className="username">{fullname}</span>
                 <FaUser className="icon" />
-                <FaCaretDown className="caret" />
+                <button className="logout-button-header" onClick={handleLogOut}>
+                  Đăng xuất
+                </button>
               </div>
             </div>
-            {isDropdownOpen && (
-              <div className="dropdown-menu">
-                <ul>
-                  {currentMenuItems.map((item) => (
-                    <li className='items' key={item.path}>
-                      <NavLink
-                        to={item.path}
-                        className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')}
-                        onClick={() => setIsDropdownOpen(false)}
-                      >
-                        {item.label}
-                      </NavLink>
-                    </li>
-                  ))}
-                  <li>
-                    <button className="logout-button" onClick={handleLogOut}>
-                      Đăng xuất
-                    </button>
-                  </li>
-                </ul>
-              </div>
-            )}
           </div>
         </div>
       )}

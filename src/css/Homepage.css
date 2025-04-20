@@ -1,112 +1,404 @@
-/* App.css */
-
-/* Reset default styles and set global styles */
+/* Base styles */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-  }
-  
-  /* Main app container */
-  .app {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    background-color: #f5e6cc; /* Light orange background */
-  }
-  
-  /* Header styling (uncomment and style if needed) */
-  .header {
-    /* background-color: #f4a261; Orange header background */
-    padding: 10px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
-  }
-  
-  /* Main content area */
-  .main-content {
-    display: flex;
-    flex: 1;
-  }
-  
-  /* Sidebar styling */
-  .sidebar {
-    width: 200px;
-    background-color: #fff;
-    padding: 20px;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-    height: calc(100vh - 60px); /* Adjust based on header height */
-  }
-  
-  .sidebar-item {
-    margin-bottom: 20px;
-  }
-  
-  .sidebar-item h3 {
-    font-size: 16px;
-    color: #333;
-    margin-bottom: 10px;
-  }
-  
-  .sidebar-item .sidebar-item h3 {
-    font-size: 14px;
-    color: #666;
-    margin-left: 10px;
-  }
-  
-  /* Dashboard (main content) styling */
-  .dashboard {
-    flex: 1;
-    padding: 20px;
-  }
-  
-  .dashboard h2 {
-    font-size: 24px;
-    color: #4a2c2a; /* Dark brown color for the heading */
-    margin-bottom: 20px;
-  }
-  
-  .dashboard h2 span {
-    color: #666; /* Lighter gray for the subtitle */
-  }
-  
-  /* Card grid styling */
-  .card-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 columns */
-    gap: 20px;
-  }
-  
-  /* Individual card styling */
-  .card {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    min-height: 150px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 16px;
-    color: #4a2c2a; /* Dark brown text */
-    text-align: center;
-  }
-  
-  /* Responsive design for smaller screens */
-  @media (max-width: 768px) {
-    .main-content {
-      flex-direction: column;
-    }
-  
-    .sidebar {
-      width: 100%;
-      height: auto;
-    }
-  
-    .card-grid {
-      grid-template-columns: 1fr; /* Stack cards on smaller screens */
-    }
-  }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background-color: #fceed0; /* Exact light orange color from image */
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content-wrapper {
+  display: flex;
+  flex: 1;
+}
+
+/* Sidebar styles - EXACT MATCH */
+.sidebar {
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 0;
+  flex-shrink: 0;
+  margin-left: 5px;
+  margin-top: 5px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.sidebar-section {
+  margin-bottom: 5px;
+}
+
+.sidebar-title {
+  color: #8b0000;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 12px 10px;
+  background-color: white;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.sidebar-menu {
+  list-style: none;
+}
+
+.sidebar-menu-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 15px;
+  color: #333;
+  cursor: pointer;
+  font-size: 13px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.sidebar-menu-item:hover {
+  background-color: #f5f5f5;
+}
+
+.arrow {
+  color: #999;
+  font-size: 16px;
+}
+
+/* Dashboard styles - EXACT MATCH */
+.dashboard {
+  flex: 1;
+  padding: 20px;
+  padding-left: 0; /* Adjust for perfect layout matching */
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 15px;
+  padding: 5px 20px;
+}
+
+.chart-card {
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  padding: 5px;
+  overflow: hidden;
+  height: 265px; /* Exact height matching */
+}
+
+.chart-title {
+  color: #8b0000;
+  font-size: 16px;
+  font-weight: normal;
+  margin-bottom: 5px;
+  border-bottom: 1px solid #f0f0f0;
+  padding-bottom: 5px;
+}
+
+.chart-container {
+  height: 200px;
+  margin-top: 10px;
+}
+
+/* Popular posts styles - EXACT MATCH */
+.popular-posts {
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 40px);
+  overflow-y: auto;
+  padding-top: 10px;
+}
+
+.popular-post-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.post-info {
+  flex: 1;
+}
+
+.post-title {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #000;
+}
+
+.post-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  color: #666;
+}
+
+.post-category {
+  display: flex;
+  align-items: center;
+  color: #666;
+  font-size: 11px;
+}
+
+.post-category:before {
+  content: "";
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin-right: 3px;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>');
+  background-repeat: no-repeat;
+  background-position: center;
+  color: #666;
+}
+
+.writer-badge {
+  background-color: #e6e6e6;
+  border-radius: 3px;
+  padding: 2px 5px;
+  font-size: 11px;
+  color: #666;
+  display: flex;
+  align-items: center;
+}
+
+.writer-text:before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  margin-right: 3px;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>');
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.post-views {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #333;
+}
+
+.views-icon {
+  font-size: 20px;
+  color: #666;
+}
+
+.views-count {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* Writers chart styles - EXACT MATCH */
+.writers-chart-container {
+  height: calc(100% - 40px);
+  display: flex;
+  flex-direction: column;
+}
+
+.writers-chart {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding-top: 15px;
+  position: relative;
+}
+
+.bar-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  height: 150px;
+  gap: 30px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.writer-bar {
+  width: 30px;
+  border-radius: 2px 2px 0 0;
+}
+
+.chart-axis {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 30px;
+  padding: 0 30px;
+  color: #666;
+  font-size: 12px;
+  margin-top: 5px;
+  position: relative;
+}
+
+.chart-axis:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 30px;
+  right: 30px;
+  height: 1px;
+  background-color: #ccc;
+}
+
+.x-axis-label {
+  text-align: center;
+  width: 100%;
+}
+
+.writer-legend {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 10px;
+  padding-bottom: 10px;
+}
+
+.writer-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  color: #666;
+}
+
+.legend-color {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+}
+
+/* Make bar charts exactly like in image */
+.recharts-cartesian-grid-horizontal line {
+  stroke: #e0e0e0;
+}
+
+.recharts-cartesian-grid-vertical line {
+  stroke: none;
+}
+
+.recharts-xAxis line {
+  stroke: #000;
+}
+
+.recharts-bar-rectangle {
+  fill: #f7a5b8 !important;
+}
+/* CSS for the new article blocks */
+.recent-articles {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 10px;
+}
+
+.article-block {
+  display: flex;
+  align-items: center;
+  background-color: #f9f9f9;
+  border-radius: 6px;
+  padding: 15px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.article-block:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.article-block.published {
+  border-left: 4px solid #4caf50;
+}
+
+.article-block.review {
+  border-left: 4px solid #ff9800;
+}
+
+.article-icon {
+  font-size: 24px;
+  margin-right: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.article-block.published .article-icon {
+  color: #4caf50;
+  background-color: rgba(76, 175, 80, 0.1);
+}
+
+.article-block.review .article-icon {
+  color: #ff9800;
+  background-color: rgba(255, 152, 0, 0.1);
+}
+
+.article-details {
+  flex: 1;
+}
+
+.article-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 5px 0;
+  color: #333;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.article-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #666;
+}
+
+.article-date {
+  font-style: italic;
+}
+
+.article-status {
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 11px;
+}
+
+.published-status {
+  background-color: rgba(76, 175, 80, 0.1);
+  color: #4caf50;
+}
+
+.review-status {
+  background-color: rgba(255, 152, 0, 0.1);
+  color: #ff9800;
+}
+/* CRITICAL: Add this to avoid RechartJS default line */
+.recharts-cartesian-axis-line {
+  stroke: #000;
+}
+
+.recharts-cartesian-axis-tick-line {
+  stroke: none;
+}
+
+.recharts-text {
+  font-size: 12px;
+  fill: #333;
+}

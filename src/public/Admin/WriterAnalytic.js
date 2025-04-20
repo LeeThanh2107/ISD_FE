@@ -1,6 +1,26 @@
+import { useState, useEffect } from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import api from '../../api/api';
 
-function Homepage() {
+function WriterAnalytic() {
+  const [mostRecentReviewArticle, setMostRecentReviewArticle] = useState(null);
+  
+  useEffect(() => {
+    async function fetchArticles() {
+      try {
+        // Fetch most recent published article
+        const publishedResponse = await api.get('/writer/article/get-most-recent-article');        
+        // Fetch most recent review article (assuming there's an endpoint for this)
+        // Replace with the actual endpoint for review articles
+        setMostRecentReviewArticle(publishedResponse.data.data["1"]);
+      } catch (error) {
+        console.error('Error fetching articles:', error);
+      }
+    }
+    
+    fetchArticles();
+  }, []);
+
   // Weekly chart data - matches the exact heights shown in image
   const weeklyData = [
     { date: '27/3', views: 320 },
@@ -22,19 +42,49 @@ function Homepage() {
     { hour: '11h', views: 370 },
     { hour: '12h', views: 350 },
   ];
-
-  // Popular articles data
-  const popularPosts = [
-    { id: 1, title: 'Nâng cao sức chiến đấu, bảo vệ tư tưởng của Đảng', category: 'Chống tự diễn biến, tự chuyển hóa', views: 611, writer: 'Tên Writer' },
-    { id: 2, title: 'Nâng cao sức chiến đấu, bảo vệ tư tưởng của Đảng', category: 'Chống tự diễn biến, tự chuyển hóa', views: 555 },
-    { id: 3, title: 'Nâng cao sức chiến đấu, bảo vệ tư tưởng của Đảng', category: 'Chống tự diễn biến, tự chuyển hóa', views: 432 },
-  ];
-
-  // Writers data
+  // Function to format the date for display
+  const formatDate = (dateString) => {
+    if (!dateString) return '';
+    const date = new Date(dateString);
+    return date.toLocaleDateString('vi-VN');
+  };
 
   return (
     <div className="app">
-      <div className="content-wrapper">        
+      <div className="content-wrapper">
+        <aside className="sidebar">
+          <div className="sidebar-section">
+            <h3 className="sidebar-title">Báo điện tử</h3>
+            <ul className="sidebar-menu">
+              <li className="sidebar-menu-item">
+                <span>Quản trị bài viết</span>
+                <span className="arrow">›</span>
+              </li>
+              <li className="sidebar-menu-item">
+                <span>Thay điện</span>
+                <span className="arrow">›</span>
+              </li>
+              <li className="sidebar-menu-item">
+                <span>Quiz</span>
+                <span className="arrow">›</span>
+              </li>
+              <li className="sidebar-menu-item">
+                <span>Tác giả</span>
+                <span className="arrow">›</span>
+              </li>
+            </ul>
+          </div>
+          <div className="sidebar-section">
+            <h3 className="sidebar-title">Báo in</h3>
+            <ul className="sidebar-menu">
+              <li className="sidebar-menu-item">
+                <span>Quản trị bài viết</span>
+                <span className="arrow">›</span>
+              </li>
+            </ul>
+          </div>
+        </aside>
+        
         <main className="dashboard">
           <div className="dashboard-grid">
             {/* Weekly Views Chart - EXACT MATCH */}
@@ -99,31 +149,48 @@ function Homepage() {
               </div>
             </div>
             
-            {/* Popular Posts - EXACT MATCH */}
-            <div className="chart-card">
-              <h3 className="chart-title">Bài được xem nhiều trong ngày</h3>
-              <div className="popular-posts">
-                {popularPosts.map((post) => (
-                  <div key={post.id} className="popular-post-item">
-                    <div className="post-info">
-                      <h4 className="post-title">{post.title}</h4>
-                      <div className="post-meta">
-                        <span className="post-category">{post.category}</span>
-                        {post.writer && (
-                          <div className="writer-badge">
-                            <span className="writer-text">{post.writer}</span>
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                    <div className="post-views">
-                      <span className="views-icon">👁️</span>
-                      <span className="views-count">{post.views}</span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+            {/* Most Recent Articles - MODIFIED */}
+            <div className="flex flex-row justify-between w-full">
+      {/* Left column - Author info */}
+      <div className="flex flex-col items-center">
+        {/* Person at laptop icon */}
+        <div className="mb-2 text-center">
+          <svg viewBox="0 0 24 24" width="48" height="48" fill="currentColor">
+            <circle cx="12" cy="7" r="4" />
+            <rect x="8" y="13" width="8" height="4" />
+            <rect x="2" y="17" width="20" height="2" />
+          </svg>
+        </div>
+        <div className="text-center font-medium">Được gửi lên</div>
+        <div className="text-center">ban biên tập</div>
+        <div className="text-center mt-2">({mostRecentReviewArticle?.name})</div>
+        <div className="text-center text-sm text-gray-600">
+          {formatDate(mostRecentReviewArticle?.date)}
+        </div>
+      </div>
+
+      {/* Right column - Editor info */}
+      <div className="flex flex-col items-center">
+        {/* Document with checkmark icon */}
+        <div className="mb-2 text-center">
+          <svg viewBox="0 0 24 24" width="48" height="48" fill="currentColor">
+            <rect x="8" y="2" width="12" height="16" />
+            <rect x="10" y="4" width="8" height="1" />
+            <rect x="10" y="7" width="8" height="1" />
+            <rect x="10" y="10" width="8" height="1" />
+            <rect x="10" y="13" width="5" height="1" />
+            <circle cx="16" cy="16" r="5" />
+            <path d="M14,16 L15.5,17.5 L18,15" strokeWidth="1" stroke="white" fill="none" />
+          </svg>
+        </div>
+        <div className="text-center font-medium">Được chấp thuận</div>
+        <div className="text-center">xuất bản</div>
+        <div className="text-center mt-2">({mostRecentReviewArticle?.name})</div>
+        <div className="text-center text-sm text-gray-600">
+          {formatDate(mostRecentReviewArticle?.date)}
+        </div>
+      </div>
+    </div>
             
             {/* Writers Chart - EXACT MATCH */}
             <div className="chart-card">
@@ -164,4 +231,4 @@ function Homepage() {
   );
 }
 
-export default Homepage;
+export default WriterAnalytic;

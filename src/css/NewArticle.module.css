@@ -11,18 +11,27 @@
 .main-content {
   flex: 1;
   padding: 20px;
-  background-color: #e8ecef; /* Light gray background as in the image */
+  background-color: linear-gradient(90deg, #E36313 0%, #F1BE50 100%); /* Light gray background as in the image */
   display: flex;
   justify-content: center;
 }
-
+.wrapper{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #e9ecef;
+  width:100%;
+  margin:20px;
+  height: 100vh;
+}
 /* Content wrapper to maintain white background */
 .content-wrapper {
   background-color: #fff; /* White background for the content area */
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  width: 100%;
+  width: 50%;
+  height:100%;
 }
 /* Save Button Styling */
 .save-button-container {
@@ -249,7 +258,6 @@ body.modal-open {
 
 /* Sidebar (unchanged) */
 .sidebar {
-  width: 300px;
   background-color: #e8ecef;
   padding: 20px;
   border-left: 1px solid #ccc;
