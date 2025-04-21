@@ -308,7 +308,9 @@ const ManuscriptSubmission = () => {
     // Original redirect logic remains the same
     window.location.href = '/writer/home';
   };
-
+  const handleRedirectList = ()=> {
+    window.location.href = 'writer/article-list'
+  }
   // --- renderEditable function is defined but NOT USED in the current JSX for content ---
   // --- It remains here unchanged as per instructions ---
   const renderEditable = (ref, placeholder, fieldName) => (
@@ -365,6 +367,9 @@ const ManuscriptSubmission = () => {
               <p>Thao tác thành công!</p> {/* Adjusted message */}
               <button type="button" onClick={handleRedirectHome}>
                 Về trang chủ
+              </button>
+              <button type="button" onClick={handleRedirectList}>
+                Hiển thị danh sách bài viết
               </button>
             </div>
           </div>

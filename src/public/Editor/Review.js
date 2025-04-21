@@ -315,9 +315,11 @@ const ManuscriptSubmission = () => {
    };
 
    const handleRedirectHome = () => {
-     window.location.href = '/writer/home'; // Or editor dashboard route
+     window.location.href = '/editor/home'; // Or editor dashboard route
    };
-
+   const handleRedirectList = ()=>{
+    window.location.href = '/editor/article-list'
+   }
    // --- renderEditable function is defined but NOT USED in the current JSX for content ---
    // --- It remains here unchanged as per instructions ---
    const renderEditable = (ref, placeholder, fieldName) => (
@@ -350,7 +352,7 @@ const ManuscriptSubmission = () => {
         </div>
         <div className={styles['header-right']}>
            {/* Link component usage is fine */}
-          <Link to="/writer/home" className={styles['back-link']}>QUAY LẠI TRANG TRƯỚC</Link>
+          <Link to="/editor/home" className={styles['back-link']}>QUAY LẠI TRANG TRƯỚC</Link>
         </div>
       </header>
 
@@ -376,6 +378,9 @@ const ManuscriptSubmission = () => {
               <p>Thao tác của bạn đã được thực hiện thành công!</p>
               <button type="button" onClick={handleRedirectHome}>
                 Về trang chủ
+              </button>
+              <button type="button" onClick={handleRedirectList}>
+                Hiển thị danh sách bài viết
               </button>
             </div>
           </div>
