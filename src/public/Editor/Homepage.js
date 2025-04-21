@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react'; // Added React import
+import React, { useState, useEffect } from 'react'; // Added React import
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import api from '../../api/api';
 import styles from '../../css/Homepage.module.css'; // 1. Import CSS Module (adjust path if needed)
@@ -43,18 +43,18 @@ function Homepage() {
     { hour: '12h', views: 350 },
   ];
 
-  const formatDate = (dateString) => {
-    if (!dateString) return '';
-    try {
-        const date = new Date(dateString);
-        // Basic validation
-        if (isNaN(date.getTime())) return 'Invalid Date';
-        return date.toLocaleDateString('vi-VN'); // Format for Vietnam
-    } catch (e) {
-        console.error("Error formatting date:", e);
-        return 'Invalid Date';
-    }
-  };
+  // const formatDate = (dateString) => {
+  //   if (!dateString) return '';
+  //   try {
+  //       const date = new Date(dateString);
+  //       // Basic validation
+  //       if (isNaN(date.getTime())) return 'Invalid Date';
+  //       return date.toLocaleDateString('vi-VN'); // Format for Vietnam
+  //   } catch (e) {
+  //       console.error("Error formatting date:", e);
+  //       return 'Invalid Date';
+  //   }
+  // };
 
 
   return (
