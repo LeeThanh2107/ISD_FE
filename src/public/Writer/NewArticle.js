@@ -206,7 +206,7 @@ const ManuscriptSubmission = () => {
   };
 
   const handleRedirectList = ()=> {
-    window.location.href = 'writer/article-list'
+    window.location.href = '/writer/article-list'
   }
   // --- renderEditable function remains the same functionally, only className is changed ---
   const renderEditable = (ref, value, placeholder, fieldName) => (
