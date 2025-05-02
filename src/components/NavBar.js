@@ -15,7 +15,8 @@ const Navbar = memo(({ userRole, isLoginScreen = false }) => {
       { path: '/admin/home', label: 'Trang chủ' },
       { path: '/admin/create-user', label: 'Cấp tài khoản' },
       { path: '/admin/reset-password', label: 'Đổi mật khẩu' },
-      { path: '/admin/list-account', label: 'Danh sách tài khoản'}
+      { path: '/admin/list-account', label: 'Danh sách tài khoản'},
+      { path: 'admin/article/list', label: 'Danh sách bài viết'},
     ],
     EDITOR: [
       { path: '/editor/home', label: 'Trang chủ' },

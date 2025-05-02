@@ -17,6 +17,8 @@ import WriterArticleList from './public/Writer/ArticleList';
 import EditArticle from './public/Writer/EditArticle';
 import WriterAnalytic from'./public/Admin/WriterAnalytic';
 import ListAccount from './public/Admin/ListAccount';
+import AdminArticleList from './public/Admin/ArticleList';
+import ArticleDetailView from "./public/Admin/ArticleDetail";
 const App = () => {
   const auth = useAuth();
   const [userRole, setUserRole] = useState('guest');
@@ -57,6 +59,8 @@ const App = () => {
         <Route path="/writer/edit/:id" element={<EditArticle />} />
         <Route path="/admin/analytic/:id" element={<WriterAnalytic />} />
         <Route path="admin/list-account" element={<ListAccount />} />
+        <Route path="admin/article/list" element={<AdminArticleList />} />
+        <Route path="admin/article/detail/:id" element={<ArticleDetailView />} />
       </Routes>
     </div>
   );
