@@ -335,7 +335,7 @@ function ManuscriptSubmission() {
     const titleToSend = title === placeholderTitle ? '' : title;
     const summaryToSend = description === placeholderDescription ? '' : description;
     const contentToSend = content === placeholderContent ? '' : content;
-    // const notesToSend = notes === placeholderNotes ? '' : notes; // Use if notes field is active
+    const notesToSend = notes === placeholderNotes ? '' : notes; // Use if notes field is active
 
     // Re-check required fields before sending (belt and suspenders)
     if (status === 3 && (!titleToSend || !summaryToSend || !contentToSend)) {
@@ -359,7 +359,7 @@ function ManuscriptSubmission() {
             content: contentToSend,
             status: status,
           },
-          // notes: notesToSend, // Include if notes field exists
+          notes: notesToSend, // Include if notes field exists
           comments: comments // Send latest comments state
       });
 

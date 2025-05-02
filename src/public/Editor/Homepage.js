@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom'; // For clickable article links
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell } from 'recharts'; // Added Cell for author chart colors
 import api from '../../api/api'; // Your configured API client
 import styles from '../../css/Homepage.module.css'; // Your CSS Module
@@ -24,19 +23,6 @@ const getShortDayName = (date) => {
    if (!(date instanceof Date) || isNaN(date.getTime())) return '';
   return date.toLocaleDateString('en-US', { weekday: 'short' });
 };
-
-/**
- * Utility to format date as DD/MM for chart axis
- */
-const formatShortDateForAxis = (dateString) => {
-    if (!dateString) return '';
-    try {
-        const date = new Date(dateString);
-        if (isNaN(date.getTime())) { return ''; }
-        return date.toLocaleDateString('vi-VN', { day: '2-digit', month: '2-digit' });
-    } catch(e) { return ''; }
-};
-
 /**
  * Calculates Top 5 daily (yesterday), Top 5 weekly (last 7 days),
  * TOTAL views, and ensures authorName exists for articles.
@@ -196,7 +182,6 @@ const calculateAuthorArticleCounts = (articles, topN = 3) => {
 // ===== HOMEPAGE COMPONENT =====
 function Homepage() {
   // --- State Definitions ---
-  const [topArticlesWeekly, setTopArticlesWeekly] = useState([]);
   const [topArticlesDaily, setTopArticlesDaily] = useState([]);   // Contains totalViews & authorName
   const [weeklyChartData, setWeeklyChartData] = useState([]);     // Aggregated views per day
   const [dailyChartData, setDailyChartData] = useState([]);       // Top 5 daily articles (name+dailyViews) for chart
@@ -229,8 +214,7 @@ function Homepage() {
 
         // --- Calculate all derived data ---
         // getPopularArticles adds totalViews, authorName etc. and returns top lists + full list
-        const { top5Weekly, top5Daily, articlesWithCalculatedViews } = getPopularArticles(allArticlesRaw);
-        setTopArticlesWeekly(top5Weekly);
+        const { top5Daily, articlesWithCalculatedViews } = getPopularArticles(allArticlesRaw);
         setTopArticlesDaily(top5Daily); // Used for rendering the list section
 
         // Calculate data for the aggregated weekly trend chart
@@ -250,7 +234,7 @@ function Homepage() {
         console.error('Error fetching or processing homepage data:', error);
         setError(error.message || 'Failed to fetch data');
         // Clear all data states on error
-        setTopArticlesWeekly([]); setTopArticlesDaily([]);
+        setTopArticlesDaily([]);
         setWeeklyChartData([]); setDailyChartData([]);
         setAuthorCountChartData([]);
       } finally {
