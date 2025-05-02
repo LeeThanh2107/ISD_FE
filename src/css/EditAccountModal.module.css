@@ -1,0 +1,155 @@
+/* EditAccountModal.module.css */
+
+.modalBackdrop {
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.5); /* Black w/ opacity */
+    display: flex;
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+  }
+  
+  .modalContent {
+    background-color: #fefefe;
+    margin: auto; /* Necessary for centering in some cases */
+    padding: 0; /* Padding handled by header/body/footer */
+    border: 1px solid #888;
+    width: 90%; /* Default width */
+    max-width: 500px; /* Maximum width */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    animation: fadeIn 0.3s; /* Simple fade-in animation */
+    display: flex;
+    flex-direction: column;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  
+  .modalHeader {
+    padding: 15px 20px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f0f0f0; /* Light header background */
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+  }
+  
+  .modalHeader h3 {
+    margin: 0;
+    font-size: 1.25em;
+    color: #333;
+  }
+  
+  .closeButton {
+    color: #aaa;
+    background: none;
+    border: none;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 0 5px;
+    line-height: 1;
+  }
+  
+  .closeButton:hover,
+  .closeButton:focus {
+    color: black;
+    text-decoration: none;
+  }
+  
+  .modalBody {
+    padding: 20px 30px; /* More padding in body */
+    flex-grow: 1; /* Allow body to grow */
+    overflow-y: auto; /* Scroll if content overflows */
+    max-height: 60vh; /* Limit height */
+  }
+  
+  .formGroup {
+    margin-bottom: 18px;
+  }
+  
+  .formGroup label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: #555;
+    font-size: 14px;
+  }
+  
+  .formInput,
+  .formSelect {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Include padding and border in element's total width/height */
+    font-size: 14px;
+  }
+  
+  .formInput:focus,
+  .formSelect:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+  }
+  
+  .modalFooter {
+    padding: 15px 20px;
+    border-top: 1px solid #eee;
+    display: flex;
+    justify-content: flex-end; /* Align buttons to the right */
+    background-color: #f0f0f0; /* Light footer background */
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+  }
+  
+  .modalButton {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    margin-left: 10px;
+    transition: background-color 0.2s ease;
+  }
+  
+  .modalButton:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+  }
+  
+  .cancelButton {
+    background-color: #6c757d; /* Grey */
+    color: white;
+  }
+  
+  .cancelButton:hover:not(:disabled) {
+    background-color: #5a6268;
+  }
+  
+  .saveButton {
+    background-color: #007bff; /* Blue */
+    color: white;
+  }
+  
+  .saveButton:hover:not(:disabled) {
+    background-color: #0056b3;
+  }
+  
+  .errorMessage {
+      color: #dc3545; /* Red */
+      font-size: 13px;
+      margin-top: 10px;
+      text-align: center;
+  }

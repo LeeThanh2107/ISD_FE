@@ -1,0 +1,136 @@
+/* AccountList.module.css */
+
+/* Container for the whole list screen */
+.account-list-container { /* Renamed class in JS: styles['account-list-container'] */
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 1200px;
+    margin: 20px auto;
+  }
+  
+  .account-list-container h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #333;
+  }
+  
+  /* Wrapper for table */
+  .table-wrapper { /* Renamed class in JS: styles['table-wrapper'] */
+      overflow-x: auto;
+  }
+  
+  /* Basic Table Styling */
+  .account-table { /* Renamed class in JS: styles['account-table'] */
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    font-size: 14px;
+    background-color: #fff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }
+  
+  /* Table Header */
+  .account-table th {
+    background-color: #e9ecef;
+    color: #495057;
+    padding: 12px 15px;
+    text-align: left;
+    font-weight: 600;
+    border-bottom: 2px solid #dee2e6;
+    white-space: nowrap;
+  }
+  
+  /* Table Cells */
+  .account-table td {
+    padding: 10px 15px;
+    border-bottom: 1px solid #dee2e6;
+    color: #495057;
+    vertical-align: middle;
+  }
+  
+  /* Alternating Row Colors */
+  /* CSS Modules correctly handle these pseudo-selectors */
+  .account-table tbody tr:nth-child(even) {
+    background-color: #f8f9fa;
+  }
+  
+  /* Hover Effect on Rows */
+  .account-table tbody tr:hover {
+    background-color: #e9ecef;
+  }
+  
+  /* Action Buttons Styling */
+  .actions-cell { /* Renamed class in JS: styles['actions-cell'] */
+      text-align: center;
+      white-space: nowrap;
+  }
+  
+  .action-button { /* Renamed class in JS: styles['action-button'] */
+    padding: 6px 12px;
+    margin: 0 4px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  /* CSS Modules correctly handle these pseudo-classes */
+  .action-button:hover {
+      opacity: 0.85;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+  }
+  
+  .edit-button { /* Renamed class in JS: styles['edit-button'] */
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .delete-button { /* Renamed class in JS: styles['delete-button'] */
+    background-color: #dc3545;
+    color: white;
+  }
+  
+  
+  /* Loading and Error Message Styling */
+  .loading-message { /* Renamed class in JS: styles['loading-message'] */
+    text-align: center;
+    padding: 40px 20px;
+    font-size: 16px;
+    color: #6c757d;
+  }
+  
+  .error-message { /* Renamed class in JS: styles['error-message'] */
+    text-align: center;
+    padding: 40px 20px;
+    font-size: 16px;
+    color: #dc3545;
+    font-weight: bold;
+  }
+  
+  /* Responsive considerations remain the same */
+  @media (max-width: 768px) {
+      /* Selectors inside media queries are also scoped */
+      .account-list-container {
+          padding: 15px;
+      }
+      .account-list-container h2 {
+          font-size: 1.5em;
+      }
+      .account-table th, .account-table td {
+          padding: 8px 10px;
+          font-size: 13px;
+      }
+       .actions-cell {
+           min-width: 180px;
+       }
+      .action-button {
+          padding: 5px 8px;
+          font-size: 12px;
+          margin: 2px;
+      }
+  }

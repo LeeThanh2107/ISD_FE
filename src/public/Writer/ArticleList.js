@@ -62,7 +62,7 @@ const ListScreen = () => {
   return (
     <div className="full-list-wrapper">
       <header className="header">
-        <h2 className="page-title">Bài viết chưa phê duyệt</h2>
+        <h2 className="page-title">Danh sách bài viết</h2>
       </header>
 
       <main className="task-list">
@@ -73,15 +73,10 @@ const ListScreen = () => {
           {articlesOnDate.map((article, index) => (
             <div key={index} className="task-card full-width">
                 {/* --- Title --- */}
-                {article.status === 1 ? // Assuming status 1 allows editing
                   <div className="card-title">
                     {/* Make sure striptags and Link are correctly imported/defined */}
                     <Link to={`../writer/edit/${article.encryptedId}`} dangerouslySetInnerHTML={{ __html: striptags(article.title, ['b', 'i']) }}></Link>
                   </div>
-                  :
-                  <div className="card-title" dangerouslySetInnerHTML={{ __html: striptags(article.title, ['b', 'i']) }}>
-                  </div>
-                }
                 {/* --- Summary --- */}
                 <div className="card-summary" dangerouslySetInnerHTML={{ __html: striptags(article.summary, ['b', 'i']) }}>
                 </div>

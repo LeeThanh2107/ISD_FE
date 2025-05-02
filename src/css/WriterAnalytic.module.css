@@ -1,0 +1,172 @@
+/* WriterAnalytic.module.css */
+
+/* Main container adjustments */
+.analyticContainer {
+    padding: 25px;
+    background-color: #fefbf2; /* Light yellow background */
+    /* Use flexbox to manage height if this is the main page component */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Fallback minimum height */
+    height: 100vh; /* Try to occupy full viewport height */
+    box-sizing: border-box; /* Include padding in height calculation */
+}
+
+/* Main title above the grid */
+.mainTitle {
+    text-align: left;
+    font-size: 1.6em;
+    font-weight: 600;
+    margin-bottom: 25px;
+    color: #333;
+    flex-shrink: 0; /* Prevent title from shrinking */
+}
+
+/* Dashboard styles - MODIFIED FOR SCROLLING */
+.dashboard {
+    flex-grow: 1; /* Allow dashboard to take available space */
+    /* padding: 20px; */ /* Padding moved to analyticContainer or keep if needed */
+    /* padding-left: 0; */
+    overflow-y: scroll; /* Add vertical scrollbar ONLY when needed */
+    /* Set a maximum height relative to the viewport, accounting for padding/title */
+    /* Adjust the subtracted value based on actual top/bottom padding and title height */
+    /* Example calculation: 100vh - top_padding - bottom_padding - title_margin_bottom */
+    max-height: calc(100vh - 50px - 45px); /* Example: 50px padding, ~45px title+margin */
+
+    /* OR, simpler approach if .analyticContainer has height: 100vh and uses flex */
+}
+
+/* Grid Layout - Ensure 2x2 */
+.dashboardGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Creates two equal columns */
+    gap: 25px; /* Gap between grid items */
+    /* No height constraint here, let content determine grid height */
+}
+
+/* Card Styling (Slight adjustments for appearance) */
+.chartCard {
+    background-color: #ffffff;
+    padding: 0px 25px 5px 25px;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    /* Removed fixed height */
+}
+
+.chartTitle {
+    font-size: 1.1em;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #444;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    flex-shrink: 0; /* Prevent title shrinking */
+}
+
+.chartContainer {
+    flex-grow: 1;
+    width: 100%;
+    min-height: 200px; /* Minimum height for charts */
+}
+
+/* Styles for "Lịch sử bài viết" Card */
+.historyContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+    padding-top: 10px;
+    flex-grow: 1;
+}
+
+.historyColumn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex-basis: 45%;
+}
+
+.historyIcon {
+    margin-bottom: 12px;
+    color: #555;
+}
+
+.historyLabel {
+    font-weight: 600;
+    color: #333;
+    font-size: 0.95em;
+    margin-bottom: 2px;
+}
+
+.historySubLabel {
+    font-size: 0.9em;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.historyDetail {
+    font-weight: 500;
+    color: #0056b3;
+    font-size: 0.95em;
+    margin-top: 5px;
+}
+
+.historyDate {
+    margin-top: 5px;
+    font-size: 0.85em;
+    color: #6c757d;
+}
+
+/* Placeholder for comments section */
+.commentsPlaceholder {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #888;
+    font-style: italic;
+    min-height: 150px;
+}
+
+
+/* Loading / Error Messages */
+.loadingMessage,
+.errorMessage {
+    text-align: center;
+    padding: 40px 20px;
+    font-size: 16px;
+    color: #6c757d;
+    /* Ensure these span grid if dashboardGrid is already rendered */
+    /* grid-column: 1 / -1; */ /* Commented out as they usually replace the grid */
+}
+
+.errorMessage {
+    color: #dc3545;
+    font-weight: bold;
+}
+
+/* Tooltip Styles */
+.customTooltip {
+    background-color: rgba(30, 30, 30, 0.85);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    white-space: nowrap;
+}
+
+.customTooltip p {
+     margin: 2px 0;
+}
+
+/* Ensure writers chart placeholder styles are removed or hidden */
+.writersChartContainer, .writersChart, .barContainer, .writerBar,
+.chartAxis, .yAxisLabel, .xAxisLabel, .writerLegend,
+.writerLegendItem, .legendColor, .legendName {
+    display: none;
+}

@@ -1,4 +1,9 @@
+/* Homepage.module.css */
+
 /* Base styles */
+/* Note: Global selectors like '*' or 'body' are NOT scoped by CSS Modules.
+   It's generally better practice to put these in a global CSS file (e.g., index.css) */
+/*
 * {
   margin: 0;
   padding: 0;
@@ -7,30 +12,37 @@
 }
 
 body {
-  background-color: #fceed0; /* Exact light orange color from image */
-}
+  background-color: #fceed0; /* Light orange background from image */
+/* } */
 
+/* Layout */
 .app {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+   /* Consider moving background color here if body isn't styled globally */
+   background-color: #fceed0;
+   font-family: Arial, sans-serif; /* Apply font family here */
 }
 
 .content-wrapper {
   display: flex;
   flex: 1;
+  padding: 5px; /* Add slight padding around content + sidebar area */
 }
 
-/* Sidebar styles - EXACT MATCH */
+/* Sidebar styles (Included as they were in your provided CSS) */
 .sidebar {
   background-color: white;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   padding: 0;
   flex-shrink: 0;
-  margin-left: 5px;
-  margin-top: 5px;
+  /* margin-left: 5px; */ /* Handled by content-wrapper padding */
+  /* margin-top: 5px; */ /* Handled by content-wrapper padding */
   border-radius: 4px;
   overflow: hidden;
+  height: fit-content; /* Adjust height based on content */
+  margin-right: 5px; /* Space between sidebar and dashboard */
 }
 
 .sidebar-section {
@@ -38,7 +50,7 @@ body {
 }
 
 .sidebar-title {
-  color: #8b0000;
+  color: #8b0000; /* Dark red */
   font-size: 14px;
   font-weight: 600;
   padding: 12px 10px;
@@ -48,16 +60,23 @@ body {
 
 .sidebar-menu {
   list-style: none;
+  padding: 0; /* Remove default padding */
+  margin: 0; /* Remove default margin */
 }
 
 .sidebar-menu-item {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 8px 15px;
   color: #333;
   cursor: pointer;
   font-size: 13px;
   border-bottom: 1px solid #f0f0f0;
+}
+
+.sidebar-menu-item:last-child {
+    border-bottom: none; /* Remove border from last item */
 }
 
 .sidebar-menu-item:hover {
@@ -69,76 +88,103 @@ body {
   font-size: 16px;
 }
 
-/* Dashboard styles - EXACT MATCH */
+/* Dashboard styles */
 .dashboard {
-  flex: 1;
-  padding: 20px;
-  padding-left: 0; /* Adjust for perfect layout matching */
+  flex: 1; /* Take remaining space */
+  padding: 0 15px 15px 15px; /* Adjust padding */
 }
 
 .dashboard-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 15px;
-  padding: 5px 20px;
+  grid-template-columns: repeat(2, 1fr); /* 2 equal columns */
+  grid-template-rows: auto auto; /* Allow rows to size based on content */
+  gap: 20px; /* Consistent gap */
 }
 
 .chart-card {
   background-color: white;
   border-radius: 4px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  padding: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08); /* Softer shadow */
+  padding: 15px 20px; /* Adjusted padding */
   overflow: hidden;
-  height: 265px; /* Exact height matching */
+  /* Removed fixed height to allow content to determine height */
+  /* height: 265px; */
+  display: flex;
+  flex-direction: column;
 }
 
 .chart-title {
-  color: #8b0000;
-  font-size: 16px;
-  font-weight: normal;
-  margin-bottom: 5px;
+  color: #8b0000; /* Dark red */
+  font-size: 15px; /* Slightly adjusted */
+  font-weight: 600; /* Make titles slightly bolder */
+  margin-bottom: 15px; /* More space below title */
   border-bottom: 1px solid #f0f0f0;
-  padding-bottom: 5px;
+  padding-bottom: 10px; /* More space for border */
+  text-align: left;
 }
 
 .chart-container {
-  height: 200px;
-  margin-top: 10px;
+  flex-grow: 1; /* Allow chart container to fill card space */
+  min-height: 200px; /* Ensure charts have minimum height */
+  /* margin-top: 10px; */ /* Handled by title margin/padding */
 }
 
-/* Popular posts styles - EXACT MATCH */
+/* Popular posts styles */
 .popular-posts {
   display: flex;
   flex-direction: column;
-  height: calc(100% - 40px);
-  overflow-y: auto;
-  padding-top: 10px;
+  flex-grow: 1; /* Allow list to fill space */
+  max-height: 200px; /* Match chart height, enable scroll if needed */
+  overflow-y: auto; /* Allow scrolling if content exceeds max-height */
+  margin-top: 5px; /* Small space above list */
+}
+
+/* Style for the Link component wrapping the popular post item */
+.popular-post-item-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  transition: background-color 0.2s ease;
+}
+
+.popular-post-item-link:hover .popular-post-item {
+   background-color: #f8f9fa; /* Lighter hover */
 }
 
 .popular-post-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
+  padding: 10px 5px; /* Padding inside the item */
   border-bottom: 1px solid #f0f0f0;
+  cursor: pointer;
+}
+
+.popular-post-item:last-child {
+  border-bottom: none;
 }
 
 .post-info {
-  flex: 1;
+  flex: 1; /* Allow info to take up space */
+  margin-right: 10px; /* Space before views */
+  overflow: hidden; /* Prevent long text overflowing */
 }
 
 .post-title {
   font-size: 14px;
   font-weight: 600;
   margin-bottom: 5px;
-  color: #000;
+  color: #333; /* Blacker text */
+  white-space: nowrap; /* Prevent title wrapping */
+  overflow: hidden;
+  text-overflow: ellipsis; /* Add ... if title is too long */
 }
 
 .post-meta {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 12px;
+  font-size: 11px; /* Smaller meta */
   color: #666;
 }
 
@@ -146,40 +192,43 @@ body {
   display: flex;
   align-items: center;
   color: #666;
-  font-size: 11px;
 }
 
+/* Category Icon (Embedded SVG) */
 .post-category:before {
   content: "";
   display: inline-block;
+  flex-shrink: 0; /* Prevent icon shrinking */
   width: 14px;
   height: 14px;
-  margin-right: 3px;
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>');
+  margin-right: 4px;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="%23666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>');
   background-repeat: no-repeat;
   background-position: center;
-  color: #666;
+  background-size: contain; /* Ensure icon fits */
 }
 
 .writer-badge {
-  background-color: #e6e6e6;
+  background-color: #e9ecef; /* Slightly different gray */
   border-radius: 3px;
-  padding: 2px 5px;
-  font-size: 11px;
-  color: #666;
-  display: flex;
+  padding: 2px 6px;
+  color: #495057; /* Match category text better */
+  display: inline-flex; /* Use inline-flex */
   align-items: center;
+  white-space: nowrap; /* Prevent wrapping */
 }
 
+/* Writer Icon (Embedded SVG) */
 .writer-text:before {
   content: "";
   width: 12px;
   height: 12px;
-  margin-right: 3px;
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>');
+  margin-right: 4px;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="%23495057" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>');
   display: inline-block;
   background-repeat: no-repeat;
   background-position: center;
+  background-size: contain;
 }
 
 .post-views {
@@ -187,11 +236,13 @@ body {
   align-items: center;
   gap: 5px;
   color: #333;
+  white-space: nowrap; /* Prevent wrapping */
 }
 
 .views-icon {
-  font-size: 20px;
+  font-size: 18px; /* Slightly smaller icon */
   color: #666;
+  line-height: 1; /* Adjust line height for better alignment */
 }
 
 .views-count {
@@ -199,206 +250,77 @@ body {
   font-size: 14px;
 }
 
-/* Writers chart styles - EXACT MATCH */
-.writers-chart-container {
-  height: calc(100% - 40px);
-  display: flex;
-  flex-direction: column;
-}
-
-.writers-chart {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  padding-top: 15px;
-  position: relative;
-}
-
-.bar-container {
-  display: flex;
-  justify-content: space-around;
-  align-items: flex-end;
-  height: 150px;
-  gap: 30px;
-  padding-left: 30px;
-  padding-right: 30px;
-}
-
-.writer-bar {
-  width: 30px;
-  border-radius: 2px 2px 0 0;
-}
-
-.chart-axis {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 30px;
-  padding: 0 30px;
-  color: #666;
-  font-size: 12px;
-  margin-top: 5px;
-  position: relative;
-}
-
-.chart-axis:before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 30px;
-  right: 30px;
-  height: 1px;
-  background-color: #ccc;
-}
-
-.x-axis-label {
-  text-align: center;
-  width: 100%;
-}
-
-.writer-legend {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  margin-top: 10px;
-  padding-bottom: 10px;
-}
-
-.writer-legend-item {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 12px;
-  color: #666;
-}
-
-.legend-color {
-  width: 10px;
-  height: 10px;
-  border-radius: 2px;
-}
-
-/* Make bar charts exactly like in image */
+/* Recharts Customization (to match image) */
 .recharts-cartesian-grid-horizontal line {
-  stroke: #e0e0e0;
+  stroke: #e0e0e0; /* Match image grid lines */
 }
 
 .recharts-cartesian-grid-vertical line {
-  stroke: none;
+  stroke: none; /* No vertical grid lines */
 }
 
-.recharts-xAxis line {
-  stroke: #000;
+/* Ensure XAxis line is visible and black */
+.recharts-xAxis .recharts-cartesian-axis-line {
+  stroke: #000 !important; /* Black axis line */
+  stroke-width: 1px !important;
 }
 
-.recharts-bar-rectangle {
-  fill: #f7a5b8 !important;
-}
-/* CSS for the new article blocks */
-.recent-articles {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  padding: 10px;
+/* Hide YAxis line if present */
+.recharts-yAxis .recharts-cartesian-axis-line {
+  stroke: none !important;
 }
 
-.article-block {
-  display: flex;
-  align-items: center;
-  background-color: #f9f9f9;
-  border-radius: 6px;
-  padding: 15px;
-  transition: all 0.2s ease;
-  cursor: pointer;
-}
-
-.article-block:hover {
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  transform: translateY(-2px);
-}
-
-.article-block.published {
-  border-left: 4px solid #4caf50;
-}
-
-.article-block.review {
-  border-left: 4px solid #ff9800;
-}
-
-.article-icon {
-  font-size: 24px;
-  margin-right: 15px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-}
-
-.article-block.published .article-icon {
-  color: #4caf50;
-  background-color: rgba(76, 175, 80, 0.1);
-}
-
-.article-block.review .article-icon {
-  color: #ff9800;
-  background-color: rgba(255, 152, 0, 0.1);
-}
-
-.article-details {
-  flex: 1;
-}
-
-.article-title {
-  font-size: 16px;
-  font-weight: 600;
-  margin: 0 0 5px 0;
-  color: #333;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.article-meta {
-  display: flex;
-  justify-content: space-between;
-  font-size: 12px;
-  color: #666;
-}
-
-.article-date {
-  font-style: italic;
-}
-
-.article-status {
-  font-weight: 600;
-  padding: 2px 6px;
-  border-radius: 4px;
-  font-size: 11px;
-}
-
-.published-status {
-  background-color: rgba(76, 175, 80, 0.1);
-  color: #4caf50;
-}
-
-.review-status {
-  background-color: rgba(255, 152, 0, 0.1);
-  color: #ff9800;
-}
-/* CRITICAL: Add this to avoid RechartJS default line */
-.recharts-cartesian-axis-line {
-  stroke: #000;
-}
-
+/* Hide all tick lines */
 .recharts-cartesian-axis-tick-line {
-  stroke: none;
+  stroke: none !important;
 }
 
-.recharts-text {
-  font-size: 12px;
-  fill: #333;
+/* Style axis text */
+.recharts-text.recharts-cartesian-axis-tick-value {
+  font-size: 12px !important;
+  fill: #333 !important;
 }
+
+/* Note: Default bar fill is overridden per-chart in the JS component */
+/* .recharts-bar-rectangle { */
+  /* fill: #f7a5b8 !important; */ /* Can set default, but Cell overrides */
+/* } */
+
+
+/* Custom Tooltip */
+.customTooltip {
+  background-color: rgba(30, 30, 30, 0.85);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  white-space: nowrap;
+}
+.customTooltip p { margin: 2px 0; }
+
+
+/* Loading and Error Message Styling */
+.loadingMessage,
+.errorMessage {
+  text-align: center;
+  padding: 40px 20px;
+  font-size: 16px;
+  color: #6c757d;
+  /* Span across grid if needed */
+  grid-column: 1 / -1;
+}
+
+.errorMessage {
+  color: #dc3545;
+  font-weight: bold;
+}
+
+/* Remove unused styles from input */
+/* Removed: .recent-articles, .article-block, .article-icon, .article-details, */
+/* .article-title, .article-meta, .article-date, .article-status, */
+/* .published-status, .review-status */
+/* Removed placeholder writers chart styles */
+/* Removed: .writers-chart-container, .writers-chart, .bar-container, .writer-bar, */
+/* .chart-axis, .y-axis-label, .x-axis-label, .writer-legend, */
+/* .writer-legend-item, .legend-color, .legend-name */
