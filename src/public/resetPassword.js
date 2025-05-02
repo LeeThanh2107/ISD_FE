@@ -43,7 +43,6 @@ const ResetPassword = () => {
           <div className="input-group">
             <label htmlFor="password">Mật khẩu mới</label>
             <div className="input-wrapper">
-              <i className="fas fa-lock icon"></i>
               <input
                 type="password"
                 id="password"
@@ -57,7 +56,6 @@ const ResetPassword = () => {
           <div className="input-group">
             <label htmlFor="password">Nhập lại mật khẩu mới</label>
             <div className="input-wrapper">
-              <i className="fas fa-lock icon"></i>
               <input
                 type="password"
                 id="password"

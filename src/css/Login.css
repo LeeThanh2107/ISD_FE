@@ -1,12 +1,12 @@
 /* Login.css */
 
 /* Đảm bảo body không có margin mặc định */
-body {
+/* body {
     margin: 0;
     padding: 0;
     overflow: hidden;
-  }
-  
+  } */
+    
   /* Container chính để căn giữa */
   .login-container {
     display: flex;
